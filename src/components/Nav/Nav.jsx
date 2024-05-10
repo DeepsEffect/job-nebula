@@ -21,7 +21,7 @@ import "./Nav.css";
 
 function NavList() {
   return (
-    <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1">
+    <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1 text-white ">
       <NavLink to={"/"}>
         <ListItem className="flex items-center gap-2 py-2 pr-4">Home</ListItem>
       </NavLink>
@@ -63,17 +63,17 @@ function Nav() {
   }, []);
 
   return (
-    <Navbar className="mx-auto max-w-full px-4 py-2">
-      <div className="flex lg:px-10 items-center justify-between text-blue-gray-900">
-        <Link to={"/"} className="mr-4 cursor-pointer py-1.5 lg:ml-2 font-bold">
-          Job Nebula
+    <Navbar className="max-w-full py-2 bg-primary rounded-none border-none shadow-lg">
+      <div className="flex lg:px-24 mx-auto items-center justify-between text-text">
+        <Link to={"/"} className="mr-4 cursor-pointer py-1.5 lg:ml-2 font-bold text-xl lg:text-2xl text-white drop-shadow-lg">
+          Job <span className="text-primary ">Nebula</span>
         </Link>
         <div className="hidden lg:block">
           <NavList />
         </div>
         <div className="hidden gap-2 lg:flex items-center">
-          <section>
-            <Button variant="text" size="sm" color="blue-gray">
+          <section className="space-x-2">
+            <Button variant="text" color="white" size="sm" >
               Log In
             </Button>
             <Button variant="gradient" size="sm">
@@ -160,7 +160,7 @@ function Nav() {
         </div>
         <IconButton
           variant="text"
-          color="blue-gray"
+          // color="blue-gray"
           className="lg:hidden"
           onClick={() => setOpenNav(!openNav)}
         >
@@ -174,7 +174,7 @@ function Nav() {
       <Collapse open={openNav}>
         <NavList />
         <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
-          <Button variant="outlined" size="sm" color="blue-gray" fullWidth>
+          <Button variant="outlined" size="sm"  fullWidth>
             Log In
           </Button>
           <Button variant="gradient" size="sm" fullWidth>
