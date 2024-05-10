@@ -1,6 +1,47 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProver";
+import { useContext } from "react";
+import toast from "react-hot-toast";
 
 const Login = () => {
+
+  const { loginUser, signInWithGoogle } =
+  useContext(AuthContext);
+const navigate = useNavigate();
+const location = useLocation();
+
+const handleLoginUser = (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const email = form.email.value;
+  const password = form.password.value;
+  // console.log(email, password);
+  loginUser(email, password)
+    .then((userCredential) => {
+      // console.log(userCredential.user);
+      toast.success(`"${userCredential.user.displayName}" Login Successful`);
+      navigate(location?.state ? location.state : "/");
+    })
+    .catch((error) => {
+      console.error(error);
+      toast.error(error.code);
+    });
+};
+//handle google sign in
+const handleSignInWithGoogle = () => {
+  signInWithGoogle()
+    .then((userCredential) => {
+      console.log(userCredential.user);
+      toast.success("Successfully Signed In with Google");
+      navigate(location?.state ? location.state : "/");
+    })
+    .catch((error) => {
+      console.error(error);
+      toast.error(error.code);
+    });
+};
+
+
   return (
     <section>
       <div className="bg-primary min-h-[400px] text-center text-white flex flex-col justify-center items-center">
@@ -56,7 +97,7 @@ const Login = () => {
                 </p>
 
                 {/* sign in with google */}
-                <button className="flex items-center w-full justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <button onClick={handleSignInWithGoogle} className="flex items-center w-full justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
                   <div className="px-4 py-2">
                     <svg className="w-6 h-6" viewBox="0 0 40 40">
                       <path
@@ -85,7 +126,7 @@ const Login = () => {
               </div>
 
               <div className="mt-8">
-                <form>
+                <form onSubmit={handleLoginUser}>
                   <div>
                     <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
                       Email Address

@@ -16,7 +16,7 @@ const SignIn = () => {
     const email = form.email.value;
     const photo = form.photo.value;
     const password = form.password.value;
-    console.log(name, email, password);
+    // console.log(name, email, password);
 
     // password validation
     if (password.length < 6) {
