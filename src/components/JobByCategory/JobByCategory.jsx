@@ -15,7 +15,7 @@ const JobByCategory = () => {
         </p>
       </div>
       {/* tabs*/}
-      <div className="mx-auto lg:px-24 mt-4 font-medium ">
+      <div className="mx-auto lg:px-24 mt-6 lg:mt-14 font-medium ">
         <Tabs>
           <TabList>
             <Tab>

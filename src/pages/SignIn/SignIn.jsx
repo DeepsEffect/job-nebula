@@ -6,7 +6,8 @@ import { updateProfile } from "firebase/auth";
 import { auth } from "../../firebase/firebase.config";
 
 const SignIn = () => {
-  const { registerUser, signInWithGoogle } = useContext(AuthContext);
+  const { registerUser, signInWithGoogle, setUser, user } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   //handle register
   const handleRegisterUser = (e) => {
@@ -39,10 +40,12 @@ const SignIn = () => {
           photoURL: photo,
         })
           .then(() => {
-            console.log(userCredential.user);
-            setTimeout(() => {
-              window.location.reload();
-            }, 1000);
+            // console.log(userCredential.user);
+            setUser({
+              ...user,
+              displayName: name,
+              photoURL: photo,
+            });
             toast.success(
               `"${userCredential.user.displayName}" Registered Successfully`
             );
