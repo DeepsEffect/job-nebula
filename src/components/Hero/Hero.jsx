@@ -16,9 +16,9 @@ const Hero = ({ title, description, imageUrl }) => {
                 {description}
               </p>
 
-              <Link to={"/addAJob"}>
+              <Link to={"/allJobs"}>
                 <button className="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-primary rounded-lg lg:w-auto hover:bg-secondary focus:outline-none focus:bg-primary">
-                  Post Now
+                  Apply Now
                 </button>
               </Link>
             </div>

@@ -1,6 +1,77 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProver";
+import { useContext } from "react";
+import toast from "react-hot-toast";
+import { updateProfile } from "firebase/auth";
+import { auth } from "../../firebase/firebase.config";
 
 const SignIn = () => {
+  const { registerUser, signInWithGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
+  //handle register
+  const handleRegisterUser = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photo = form.photo.value;
+    const password = form.password.value;
+    console.log(name, email, password);
+
+    // password validation
+    if (password.length < 6) {
+      toast.error("Password must be more than 6 characters");
+      return;
+    }
+    if (!/[A-Z]/.test(password)) {
+      toast.error("Password must contain at least one uppercase letter.");
+      return;
+    }
+    if (!/[a-z]/.test(password)) {
+      toast.error("Password must contain at least one lowercase letter.");
+      return;
+    }
+
+    registerUser(email, password)
+      .then((userCredential) => {
+        updateProfile(auth.currentUser, {
+          displayName: name,
+          photoURL: photo,
+        })
+          .then(() => {
+            console.log(userCredential.user);
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
+            toast.success(
+              `"${userCredential.user.displayName}" Registered Successfully`
+            );
+            navigate("/");
+          })
+          .catch((error) => {
+            console.error("Error updating profile:", error.firebase);
+          });
+      })
+      .catch((error) => {
+        console.error(error);
+        toast.error(error.code.slice(5));
+      });
+  };
+
+  // handle google sign in
+  const handleSignInWithGoogle = () => {
+    signInWithGoogle()
+      .then((userCredential) => {
+        console.log(userCredential.user);
+        toast.success("Successfully Signed In with Google");
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error(error);
+        toast.error(error.code);
+      });
+  };
+
   return (
     <section className="lg:mb-20">
       <div className="bg-primary min-h-[400px] text-center text-white flex flex-col justify-center items-center">
@@ -27,7 +98,10 @@ const SignIn = () => {
             Welcome!
           </p>
 
-          <button className="flex items-center w-full justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+          <button
+            onClick={handleSignInWithGoogle}
+            className="flex items-center w-full justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
+          >
             <div className="px-4 py-2">
               <svg className="w-6 h-6" viewBox="0 0 40 40">
                 <path
@@ -67,65 +141,73 @@ const SignIn = () => {
             <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
           </div>
 
-          <div className="mt-4">
-            <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
-              Username
-            </label>
-            <input
-              required
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-opacity-40 dark:focus:border-primary focus:outline-none focus:ring focus:ring-primary"
-              type="text"
-            />
-          </div>
-
-          <div className="mt-4">
-            <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
-              Email Address
-            </label>
-            <input
-              required
-              id="LoggingEmailAddress"
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-opacity-40 dark:focus:border-primary focus:outline-none focus:ring focus:ring-primary"
-              type="email"
-            />
-          </div>
-
-          <div className="mt-4">
-            <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
-              Photo Url
-            </label>
-            <input
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-opacity-40 dark:focus:border-primary focus:outline-none focus:ring focus:ring-primary"
-              type="photo"
-            />
-          </div>
-
-          <div className="mt-4">
-            <div className="flex justify-between">
+          <form onSubmit={handleRegisterUser}>
+            <div className="mt-4">
               <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
-                Password
+                Username
               </label>
-              <Link
-                to="#"
-                className="text-xs text-gray-500 dark:text-gray-300 hover:underline"
-              >
-                Forget Password?
-              </Link>
+              <input
+                required
+                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-opacity-40 dark:focus:border-primary focus:outline-none focus:ring focus:ring-primary"
+                type="text"
+                name="name"
+              />
             </div>
 
-            <input
-              required
-              id="loggingPassword"
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-opacity-40 dark:focus:border-primary focus:outline-none focus:ring focus:ring-primary"
-              type="password"
-            />
-          </div>
+            <div className="mt-4">
+              <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
+                Email Address
+              </label>
+              <input
+                required
+                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-opacity-40 dark:focus:border-primary focus:outline-none focus:ring focus:ring-primary"
+                type="email"
+                name="email"
+              />
+            </div>
 
-          <div className="mt-6">
-            <button className="w-full bg-primary px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform rounded-lg hover:bg-secondary focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-50">
-              Sign In
-            </button>
-          </div>
+            <div className="mt-4">
+              <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
+                Photo Url
+              </label>
+              <input
+                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-opacity-40 dark:focus:border-primary focus:outline-none focus:ring focus:ring-primary"
+                type="url"
+                name="photo"
+              />
+            </div>
+
+            <div className="mt-4">
+              <div className="flex justify-between">
+                <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
+                  Password
+                </label>
+                <Link
+                  to="#"
+                  className="text-xs text-gray-500 dark:text-gray-300 hover:underline"
+                >
+                  Forget Password?
+                </Link>
+              </div>
+
+              <input
+                required
+                id="loggingPassword"
+                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-opacity-40 dark:focus:border-primary focus:outline-none focus:ring focus:ring-primary"
+                type="password"
+                name="password"
+              />
+            </div>
+
+            <div className="mt-6">
+              <button
+                type="submit"
+                className="w-full bg-primary px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform rounded-lg hover:bg-secondary focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-50"
+              >
+                Sign In
+              </button>
+            </div>
+          </form>
 
           <div className="flex items-center justify-between mt-4">
             <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
