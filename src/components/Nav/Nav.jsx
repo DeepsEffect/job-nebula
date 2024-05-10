@@ -63,7 +63,7 @@ function Nav() {
   }, []);
 
   return (
-    <section className="max-w-full py-2 bg-primary rounded-none border-none sticky top-0">
+    <section className="z-10 max-w-full py-2 bg-primary rounded-none border-none sticky top-0">
       <div className="flex px-8 lg:px-24 mx-auto items-center justify-between text-text">
         <Link
           to={"/"}
