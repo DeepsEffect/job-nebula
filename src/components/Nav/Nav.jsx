@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Navbar,
+  // Navbar,
   Collapse,
   Typography,
   Button,
@@ -63,22 +63,30 @@ function Nav() {
   }, []);
 
   return (
-    <Navbar className="max-w-full py-2 bg-primary rounded-none border-none shadow-lg">
-      <div className="flex lg:px-24 mx-auto items-center justify-between text-text">
-        <Link to={"/"} className="mr-4 cursor-pointer py-1.5 lg:ml-2 font-bold text-xl lg:text-2xl text-white drop-shadow-lg">
-          Job <span className="text-primary ">Nebula</span>
+    <section className="max-w-full py-2 bg-primary rounded-none border-none sticky top-0">
+      <div className="flex px-8 lg:px-24 mx-auto items-center justify-between text-text">
+        <Link
+          to={"/"}
+          className="mr-4 cursor-pointer py-1.5 lg:ml-2 font-bold text-xl lg:text-2xl text-white drop-shadow-lg"
+        >
+          Job <span className="">Nebula</span>
         </Link>
         <div className="hidden lg:block">
           <NavList />
         </div>
         <div className="hidden gap-2 lg:flex items-center">
           <section className="space-x-2">
-            <Button variant="text" color="white" size="sm" >
-              Log In
-            </Button>
-            <Button variant="gradient" size="sm">
-              Sign In
-            </Button>
+            <Link to={"/login"}>
+              {" "}
+              <Button variant="text" color="white" size="sm">
+                Log In
+              </Button>
+            </Link>
+            <Link to={"/signIn"}>
+              <Button variant="gradient" size="sm">
+                Sign In
+              </Button>
+            </Link>
           </section>
           {/* avatar */}
           <Menu>
@@ -174,7 +182,7 @@ function Nav() {
       <Collapse open={openNav}>
         <NavList />
         <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
-          <Button variant="outlined" size="sm"  fullWidth>
+          <Button variant="outlined" size="sm" fullWidth>
             Log In
           </Button>
           <Button variant="gradient" size="sm" fullWidth>
@@ -182,7 +190,7 @@ function Nav() {
           </Button>
         </div>
       </Collapse>
-    </Navbar>
+    </section>
   );
 }
 export default Nav;
