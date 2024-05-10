@@ -1,3 +1,4 @@
+import { Button } from "@material-tailwind/react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
@@ -17,11 +18,42 @@ const JobByCategory = () => {
       <div className="mx-auto lg:px-24 mt-4 font-medium ">
         <Tabs>
           <TabList>
-            <Tab>All Jobs</Tab>
-            <Tab>On-Site Job</Tab>
-            <Tab>Remote Job</Tab>
-            <Tab>Hybrid</Tab>
-            <Tab>Part-time</Tab>
+            <Tab>
+              <Button
+                variant="text"
+                size="lg"
+                className="hover:bg-transparent active:bg-transparent border-none"
+              >
+                All Jobs
+              </Button>
+            </Tab>
+            <Tab>
+              <Button
+                variant="text"
+                size="lg"
+                className="hover:bg-transparent active:bg-transparent border-none"
+              >
+                On-Site Job
+              </Button>
+            </Tab>
+            <Tab>
+              <Button
+                variant="text"
+                size="lg"
+                className="hover:bg-transparent active:bg-transparent border-none"
+              >
+                Remote Job
+              </Button>
+            </Tab>
+            <Tab>
+              <Button
+                variant="text"
+                size="lg"
+                className="hover:bg-transparent active:bg-transparent border-none"
+              >
+                Part-time
+              </Button>
+            </Tab>
           </TabList>
 
           <TabPanel>

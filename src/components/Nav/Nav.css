@@ -1,5 +1,6 @@
 .active {
-  background-color: #3c3c3c;
+  background-color: #805ad5;
+  color: #ffffff;
   border-radius: 8px;
+  transition: background-color 0.3s ease;
 }
-

@@ -25,30 +25,32 @@ function NavList() {
   return (
     <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1 text-white ">
       <NavLink to={"/"}>
-        <ListItem className="flex items-center gap-2 py-2 pr-4">Home</ListItem>
+        <ListItem className="flex items-center gap-2 py-2 pr-4  hover:bg-transparent hover:text-white focus:bg-transparent focus:text-white active:bg-transparent active:text-white">
+          Home
+        </ListItem>
       </NavLink>
       <NavLink to={"/allJobs"}>
-        <ListItem className="flex items-center gap-2 py-2 pr-4">
+        <ListItem className="flex items-center gap-2 py-2 pr-4 hover:bg-transparent hover:text-white focus:bg-transparent focus:text-white active:bg-transparent active:text-white">
           All Jobs
         </ListItem>
       </NavLink>
       <NavLink to={"appliedJobs"}>
-        <ListItem className="flex items-center gap-2 py-2 pr-4">
+        <ListItem className="flex items-center gap-2 py-2 pr-4 hover:bg-transparent hover:text-white focus:bg-transparent focus:text-white active:bg-transparent active:text-white">
           Applied Jobs
         </ListItem>
       </NavLink>
       <NavLink to={"addAJob"}>
-        <ListItem className="flex items-center gap-2 py-2 pr-4">
+        <ListItem className="flex items-center gap-2 py-2 pr-4 hover:bg-transparent hover:text-white focus:bg-transparent focus:text-white active:bg-transparent active:text-white">
           Add A Job
         </ListItem>
       </NavLink>
       <NavLink to={"myJobs"}>
-        <ListItem className="flex items-center gap-2 py-2 pr-4">
+        <ListItem className="flex items-center gap-2 py-2 pr-4 hover:bg-transparent hover:text-white focus:bg-transparent focus:text-white active:bg-transparent active:text-white">
           My Jobs
         </ListItem>
       </NavLink>
       <NavLink to={"blogs"}>
-        <ListItem className="flex items-center gap-2 py-2 pr-4">Blogs</ListItem>
+        <ListItem className="flex items-center gap-2 py-2 pr-4 hover:bg-transparent hover:text-white focus:bg-transparent focus:text-white active:bg-transparent active:text-white">Blogs</ListItem>
       </NavLink>
     </List>
   );
@@ -56,7 +58,7 @@ function NavList() {
 
 function Nav() {
   const [openNav, setOpenNav] = React.useState(false);
-  const { user, loading, LogOut } = useContext(AuthContext);
+  const { user, LogOut } = useContext(AuthContext);
   //handle signOut
   const handleSignOut = () => {
     LogOut()
