@@ -73,7 +73,7 @@ const SignIn = () => {
             </label>
             <input
               required
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-opacity-40 dark:focus:border-primary focus:outline-none focus:ring focus:ring-primary"
               type="text"
             />
           </div>
@@ -85,7 +85,7 @@ const SignIn = () => {
             <input
               required
               id="LoggingEmailAddress"
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-opacity-40 dark:focus:border-primary focus:outline-none focus:ring focus:ring-primary"
               type="email"
             />
           </div>
@@ -95,7 +95,7 @@ const SignIn = () => {
               Photo Url
             </label>
             <input
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-opacity-40 dark:focus:border-primary focus:outline-none focus:ring focus:ring-primary"
               type="photo"
             />
           </div>
@@ -116,13 +116,13 @@ const SignIn = () => {
             <input
               required
               id="loggingPassword"
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-opacity-40 dark:focus:border-primary focus:outline-none focus:ring focus:ring-primary"
               type="password"
             />
           </div>
 
           <div className="mt-6">
-            <button className="w-full bg-primary px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform rounded-lg hover:bg-secondary focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
+            <button className="w-full bg-primary px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform rounded-lg hover:bg-secondary focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-50">
               Sign In
             </button>
           </div>
