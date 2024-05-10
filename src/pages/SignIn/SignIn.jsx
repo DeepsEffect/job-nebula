@@ -14,6 +14,7 @@ const SignIn = () => {
             backgroundImage: `url('https://images.unsplash.com/photo-1516331138075-f3adc1e149cd?q=80&w=2108&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
             backgroundPosition: "center",
             boxSizing: "border-box",
+            objectFit: "cover",
           }}
         ></div>
 
@@ -26,9 +27,7 @@ const SignIn = () => {
             Welcome!
           </p>
 
-          <button
-            className="flex items-center w-full justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
-          >
+          <button className="flex items-center w-full justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
             <div className="px-4 py-2">
               <svg className="w-6 h-6" viewBox="0 0 40 40">
                 <path
@@ -133,12 +132,12 @@ const SignIn = () => {
 
             <Link
               to={"/login"}
-              className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline"
+              className="text-xs text-primary uppercase dark:text-gray-400 hover:underline"
             >
               or Login
             </Link>
 
-            <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
+            <span className="w-1/5 border-b dark:border-primary md:w-1/4"></span>
           </div>
         </div>
       </div>
