@@ -32,7 +32,7 @@ const AllJobs = () => {
     "View Details",
   ];
 
-  console.log(jobs);
+//   console.log(jobs);
   return (
     <div>
       <div className="bg-primary min-h-[400px] text-center text-white flex flex-col justify-center items-center">

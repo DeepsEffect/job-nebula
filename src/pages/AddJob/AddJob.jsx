@@ -37,7 +37,7 @@ const AddJob = () => {
       postingDate,
       applicationDeadline,
     };
-    console.table(job);
+    // console.table(job);
 
     //send job data to the backend
     axios
@@ -48,7 +48,10 @@ const AddJob = () => {
           toast.success("Job posted successfully");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.code);
+      });
   };
   return (
     <section className="bg-white dark:bg-gray-900">
@@ -102,7 +105,7 @@ const AddJob = () => {
                 <input
                   type="url"
                   name="image"
-                  placeholder="job banner image link"
+                  placeholder="Https://yourBannerImage.com"
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-primary dark:focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
