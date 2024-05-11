@@ -54,8 +54,16 @@ const JobByCategory = () => {
                 Part-time
               </Button>
             </Tab>
+            <Tab>
+              <Button
+                variant="text"
+                size="lg"
+                className="hover:bg-transparent active:bg-transparent border-none"
+              >
+                Hybrid
+              </Button>
+            </Tab>
           </TabList>
-
           <TabPanel>
             <h2>All Jobs</h2>
           </TabPanel>
@@ -66,10 +74,10 @@ const JobByCategory = () => {
             <h2>Remote</h2>
           </TabPanel>
           <TabPanel>
-            <h2>hybrid</h2>
+            <h2>part time</h2>
           </TabPanel>
           <TabPanel>
-            <h2>part time</h2>
+            <h2>hybrid</h2>
           </TabPanel>
         </Tabs>
       </div>
