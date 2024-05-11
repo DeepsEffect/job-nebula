@@ -13,28 +13,31 @@ const AddJob = () => {
   const handlePostJob = (e) => {
     e.preventDefault();
     const form = e.target;
-    const title = form.title.value;
+    const jobTitle = form.title.value;
     const bannerImg = form.image.value;
     const user = form.name.value;
     const email = form.email.value;
     const jobCategory = form.category.value;
-    const minSalary = form.minSalary.value;
-    const maxSalary = form.maxSalary.value;
+    const minSalary = parseFloat(form.minSalary.value);
+    const maxSalary = parseFloat(form.maxSalary.value);
+    const salaryRange = { minSalary, maxSalary };
     const jobDescription = form.description.value;
     const postingDate = startDate;
     const applicationDeadline = endDate;
-    console.table(
-      title,
+    const job = {
+      jobTitle,
       bannerImg,
       user,
       email,
       jobCategory,
-      minSalary,
-      maxSalary,
+      salaryRange,
       jobDescription,
       postingDate,
-      applicationDeadline
-    );
+      applicationDeadline,
+    };
+    console.table(job);
+    //send job data to the backend
+    
   };
   return (
     <section className="bg-white dark:bg-gray-900">
