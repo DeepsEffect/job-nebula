@@ -46,60 +46,58 @@ const AllJobs = () => {
               ))}
             </tr>
           </thead>
-          {jobs.map((job) => (
-            <>
-              <tbody>
-                <tr className="even:bg-blue-gray-50/50">
-                  <td className="p-4">
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal"
+          <tbody>
+            {jobs.map((job) => (
+              <tr key={job._id} className="even:bg-blue-gray-50/50">
+                <td className="p-4">
+                  <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="font-normal"
+                  >
+                    {job.jobTitle}
+                  </Typography>
+                </td>
+                <td className="p-4">
+                  <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="font-normal"
+                  >
+                    {new Date(job.postingDate).toLocaleDateString()}
+                  </Typography>
+                </td>
+                <td className="p-4">
+                  <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="font-normal"
+                  >
+                    {new Date(job.applicationDeadline).toLocaleDateString()}
+                  </Typography>
+                </td>
+                <td className="p-4">
+                  <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="font-medium"
+                  >
+                    {`$${job.salaryRange.minSalary}-${job.salaryRange.maxSalary}`}
+                  </Typography>
+                </td>
+                <td className="p-4">
+                  <Link to={job._id}>
+                    <Button
+                      size="sm"
+                      className="font-medium bg-primary hover:bg-secondary"
                     >
-                      {job.jobTitle}
-                    </Typography>
-                  </td>
-                  <td className="p-4">
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal"
-                    >
-                      {job.postingDate}
-                    </Typography>
-                  </td>
-                  <td className="p-4">
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal"
-                    >
-                      {job.postingDate.toLocaleString()}
-                    </Typography>
-                  </td>
-                  <td className="p-4">
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-medium"
-                    >
-                      {`$${job.salaryRange.minSalary}-${job.salaryRange.maxSalary}`}
-                    </Typography>
-                  </td>
-                  <td className="p-4">
-                    <Link to={job._id}>
-                      <Button
-                        size="sm"
-                        className="font-medium bg-primary hover:bg-secondary"
-                      >
-                        View Details
-                      </Button>
-                    </Link>
-                  </td>
-                </tr>
-              </tbody>
-            </>
-          ))}
+                      View Details
+                    </Button>
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </Card>
     </div>
