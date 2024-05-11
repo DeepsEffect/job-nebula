@@ -19,6 +19,23 @@ const AllJobs = () => {
     setSearchQuery(e.target.value);
   };
 
+  //search highlights
+  const highlightKeywords = (text) => {
+    if (!searchQuery) {
+      return text;
+    }
+    const regex = new RegExp(`(${searchQuery})`, "gi");
+    return text.split(regex).map((part, index) =>
+      regex.test(part) ? (
+        <span className="bg-yellow-200" key={index}>
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+  };
+
   //filter jobs by jobTitle
   const filteredJobs = jobs.filter((job) => {
     return job.jobTitle.toLowerCase().includes(searchQuery.toLowerCase());
@@ -32,7 +49,7 @@ const AllJobs = () => {
     "View Details",
   ];
 
-//   console.log(jobs);
+  //   console.log(jobs);
   return (
     <div>
       <div className="bg-primary min-h-[400px] text-center text-white flex flex-col justify-center items-center">
@@ -65,7 +82,7 @@ const AllJobs = () => {
           />
         </div>
       </div>
-      <Card className="h-full w-full overflow-scroll lg:px-24 mt-10">
+      <Card className="h-full w-full overflow-scroll lg:overflow-hidden  mt-10">
         <table className="w-full min-w-max table-auto text-left">
           <thead>
             <tr>
@@ -94,7 +111,7 @@ const AllJobs = () => {
                     color="blue-gray"
                     className="font-normal"
                   >
-                    {job.jobTitle}
+                    {highlightKeywords(job.jobTitle)}
                   </Typography>
                 </td>
                 <td className="p-4">
