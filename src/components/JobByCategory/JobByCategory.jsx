@@ -1,8 +1,21 @@
 import { Button } from "@material-tailwind/react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import JobCard from "../JobCard/JobCard";
 
 const JobByCategory = () => {
+  const [jobs, setJobs] = useState([]);
+  useEffect(() => {
+    axios(`${import.meta.env.VITE_SERVER_API_URL}/jobs`)
+      .then((res) => {
+        setJobs(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
   return (
     <section className="lg:mt-10">
       <div className="text-center ">
@@ -65,7 +78,11 @@ const JobByCategory = () => {
             </Tab>
           </TabList>
           <TabPanel>
-            <h2>All Jobs</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              {jobs.map((job) => (
+                <JobCard job={job} key={job._id}></JobCard>
+              ))}
+            </div>
           </TabPanel>
           <TabPanel>
             <h2>on site</h2>
