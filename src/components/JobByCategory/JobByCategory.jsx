@@ -37,6 +37,7 @@ const JobByCategory = () => {
               <Button
                 variant="text"
                 size="lg"
+                ripple={false}
                 className="hover:bg-transparent active:bg-transparent border-none"
               >
                 All Jobs
@@ -46,6 +47,7 @@ const JobByCategory = () => {
               <Button
                 variant="text"
                 size="lg"
+                ripple={false}
                 className="hover:bg-transparent active:bg-transparent border-none"
               >
                 On-Site Job
@@ -55,6 +57,7 @@ const JobByCategory = () => {
               <Button
                 variant="text"
                 size="lg"
+                ripple={false}
                 className="hover:bg-transparent active:bg-transparent border-none"
               >
                 Remote Job
@@ -64,6 +67,7 @@ const JobByCategory = () => {
               <Button
                 variant="text"
                 size="lg"
+                ripple={false}
                 className="hover:bg-transparent active:bg-transparent border-none"
               >
                 Part-time
@@ -73,6 +77,7 @@ const JobByCategory = () => {
               <Button
                 variant="text"
                 size="lg"
+                ripple={false}
                 className="hover:bg-transparent active:bg-transparent border-none"
               >
                 Hybrid
