@@ -3,6 +3,8 @@ import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProver";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const AddJob = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -36,8 +38,17 @@ const AddJob = () => {
       applicationDeadline,
     };
     console.table(job);
+
     //send job data to the backend
-    
+    axios
+      .post(`${import.meta.env.VITE_SERVER_API_URL}/jobs`, job)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          toast.success("Job posted successfully");
+        }
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <section className="bg-white dark:bg-gray-900">
