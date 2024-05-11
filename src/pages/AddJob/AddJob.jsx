@@ -178,7 +178,7 @@ const AddJob = () => {
               </section>
 
               {/* job description */}
-              <div className="col-span-2">
+              <div className="lg:col-span-2">
                 <label className="block text-sm text-gray-500 dark:text-gray-300">
                   Job Description
                 </label>
@@ -215,9 +215,9 @@ const AddJob = () => {
               {/* post job */}
               <button
                 type="submit"
-                className="flex items-center col-span-2 justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-primary rounded-lg hover:bg-secondary focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-50"
+                className="flex items-center font-bold lg:col-span-2 justify-between w-full px-6 py-3 text-sm tracking-wide text-white uppercase transition-colors duration-300 transform bg-primary rounded-lg hover:bg-secondary focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-50"
               >
-                <span>Post Job </span>
+                <span className=" mx-auto">Post Job</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-5 h-5 rtl:-scale-x-100"
