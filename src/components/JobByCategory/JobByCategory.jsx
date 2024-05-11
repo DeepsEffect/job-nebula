@@ -7,6 +7,7 @@ import JobCard from "../JobCard/JobCard";
 
 const JobByCategory = () => {
   const [jobs, setJobs] = useState([]);
+
   useEffect(() => {
     axios(`${import.meta.env.VITE_SERVER_API_URL}/jobs`)
       .then((res) => {
@@ -16,6 +17,7 @@ const JobByCategory = () => {
         console.error(err);
       });
   }, []);
+
   return (
     <section className="lg:mt-10">
       <div className="text-center ">
@@ -85,16 +87,40 @@ const JobByCategory = () => {
             </div>
           </TabPanel>
           <TabPanel>
-            <h2>on site</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              {jobs
+                .filter((job) => job.jobCategory === "onSite")
+                .map((job) => (
+                  <JobCard key={job._id} job={job}></JobCard>
+                ))}
+            </div>
           </TabPanel>
           <TabPanel>
-            <h2>Remote</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              {jobs
+                .filter((job) => job.jobCategory === "remote")
+                .map((job) => (
+                  <JobCard key={job._id} job={job}></JobCard>
+                ))}
+            </div>
           </TabPanel>
           <TabPanel>
-            <h2>part time</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              {jobs
+                .filter((job) => job.jobCategory === "partTime")
+                .map((job) => (
+                  <JobCard key={job._id} job={job}></JobCard>
+                ))}
+            </div>
           </TabPanel>
           <TabPanel>
-            <h2>hybrid</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              {jobs
+                .filter((job) => job.jobCategory === "hybrid")
+                .map((job) => (
+                  <JobCard key={job._id} job={job}></JobCard>
+                ))}
+            </div>
           </TabPanel>
         </Tabs>
       </div>

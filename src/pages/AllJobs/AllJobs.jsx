@@ -45,7 +45,7 @@ const AllJobs = () => {
     "Job Title",
     "Job Posting Date",
     "Application Deadline",
-    "Salary Range (min-max)",
+    "Salary Range (yearly)",
     "View Details",
   ];
 
@@ -138,7 +138,7 @@ const AllJobs = () => {
                     color="blue-gray"
                     className="font-medium"
                   >
-                    {`$${job.salaryRange.minSalary}-${job.salaryRange.maxSalary}`}
+                    {`$${job.salaryRange.minSalary}-$${job.salaryRange.maxSalary}`}
                   </Typography>
                 </td>
                 <td className="p-4">
