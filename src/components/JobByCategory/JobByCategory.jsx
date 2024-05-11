@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import JobCard from "../JobCard/JobCard";
+import { Link } from "react-router-dom";
 
 const JobByCategory = () => {
   const [jobs, setJobs] = useState([]);
@@ -86,7 +87,7 @@ const JobByCategory = () => {
           </TabList>
           <TabPanel>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-              {jobs.map((job) => (
+              {jobs.slice(0, 9).map((job) => (
                 <JobCard job={job} key={job._id}></JobCard>
               ))}
             </div>
@@ -129,6 +130,15 @@ const JobByCategory = () => {
           </TabPanel>
         </Tabs>
       </div>
+      <Link to={"/allJobs"}>
+        <Button
+          size="sm"
+          variant="outlined"
+          className=" mx-auto flex items-center justify-center lg:mt-6 border-secondary text-secondary"
+        >
+          view all jobs
+        </Button>
+      </Link>
     </section>
   );
 };
