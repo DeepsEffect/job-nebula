@@ -56,7 +56,7 @@ const AddJob = () => {
   return (
     <section className="bg-white dark:bg-gray-900">
       <div className="bg-primary min-h-[400px] text-center text-white flex flex-col justify-center items-center">
-        <h2 className="text-4xl font-bold">Add A Job</h2>
+        <h2 className="text-4xl font-bold">Post A Job</h2>
         <p>Please fill the form below to post a job</p>
       </div>
       <div className="flex justify-center min-h-screen">

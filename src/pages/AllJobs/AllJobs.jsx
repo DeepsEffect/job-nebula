@@ -142,7 +142,7 @@ const AllJobs = () => {
                   </Typography>
                 </td>
                 <td className="p-4">
-                  <Link to={`viewDetails/${job._id}`}>
+                  <Link to={`jobDetails/${job._id}`}>
                     <Button
                       size="sm"
                       className="font-medium bg-primary hover:bg-secondary"
