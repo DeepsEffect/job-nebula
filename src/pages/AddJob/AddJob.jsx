@@ -146,10 +146,10 @@ const AddJob = () => {
                   name="category"
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-primary dark:focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40"
                 >
-                  <option value="onSite">On Site</option>
+                  <option value="On-Site">On-Site</option>
                   <option value="remote">Remote</option>
-                  <option value="partTime">Part-Time</option>
-                  <option value="hybrid">Hybrid</option>
+                  <option value="Part-Time">Part-Time</option>
+                  <option value="Hybrid">Hybrid</option>
                 </select>
               </div>
               {/* min/max salary section */}
@@ -186,6 +186,7 @@ const AddJob = () => {
                   Job Description
                 </label>
                 <textarea
+                  maxLength={400}
                   name="description"
                   placeholder="describe your job..."
                   className="block  mt-2 w-full placeholder-gray-400/70 dark:placeholder-gray-500 rounded-lg border border-gray-200 bg-white px-4 h-32 py-2.5 text-gray-700 focus:border-primary focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-primary"
