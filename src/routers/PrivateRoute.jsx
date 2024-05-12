@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { AuthContext } from "../providers/AuthProvider";
 import { Spinner } from "@material-tailwind/react";
+import { AuthContext } from "../providers/AuthProver";
 
-const PrivateRoute = ({ children }) => {
+export const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const location = useLocation();
   if (loading) {
@@ -13,8 +13,5 @@ const PrivateRoute = ({ children }) => {
   if (user) {
     return children;
   }
-
   return <Navigate state={location.pathname} to={"/login"}></Navigate>;
 };
-
-export default PrivateRoute;

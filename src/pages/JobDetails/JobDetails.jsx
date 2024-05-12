@@ -22,16 +22,19 @@ const JobDetails = () => {
           />
 
           <div className="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
-            <p className="text-lg font-bold text-primary uppercase">
-              {jobs.jobCategory}
+            <p className="text-lg font-bold text-accent uppercase">
+              <Button
+                variant="outlined"
+                size="sm"
+                className="rounded-full border-secondary"
+              >
+                {jobs.jobCategory}
+              </Button>
             </p>
 
-            <a
-              href="#"
-              className="block mt-4 text-2xl font-semibold text-gray-800 hover:underline dark:text-white md:text-3xl"
-            >
+            <h2 className="block mt-4 text-2xl font-semibold text-gray-800 hover:underline dark:text-white md:text-3xl">
               {jobs.jobTitle}
-            </a>
+            </h2>
 
             <p className="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
               {jobs.jobDescription}
