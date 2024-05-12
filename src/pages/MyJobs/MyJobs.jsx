@@ -22,7 +22,7 @@ const MyJobs = () => {
           here.
         </p>
       </div>
-      <div className="grid grid-cols-1">
+      <div className="grid grid-cols-1 lg:mt-10">
         {myJobs.length > 0 ? (
           <>
             {myJobs.map((myJob) => (
