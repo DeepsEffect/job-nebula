@@ -95,7 +95,7 @@ const JobByCategory = () => {
           <TabPanel>
             <div className="grid grid-cols-1 lg:grid-cols-2">
               {jobs
-                .filter((job) => job.jobCategory === "onSite")
+                .filter((job) => job.jobCategory === "On-Site")
                 .map((job) => (
                   <JobCard key={job._id} job={job}></JobCard>
                 ))}
@@ -113,7 +113,7 @@ const JobByCategory = () => {
           <TabPanel>
             <div className="grid grid-cols-1 lg:grid-cols-2">
               {jobs
-                .filter((job) => job.jobCategory === "partTime")
+                .filter((job) => job.jobCategory === "Part-Time")
                 .map((job) => (
                   <JobCard key={job._id} job={job}></JobCard>
                 ))}

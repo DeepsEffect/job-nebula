@@ -1,4 +1,4 @@
-import { Button, Card, Typography } from "@material-tailwind/react";
+import { Avatar, Button, Card, Typography } from "@material-tailwind/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -42,6 +42,7 @@ const AllJobs = () => {
   });
 
   const TABLE_HEAD = [
+    "Banner Image",
     "Job Title",
     "Job Posting Date",
     "Application Deadline",
@@ -105,6 +106,13 @@ const AllJobs = () => {
           <tbody>
             {filteredJobs.map((job) => (
               <tr key={job._id} className="even:bg-blue-gray-50/50">
+                <td className="p-4">
+                  <Avatar
+                    src={job.bannerImg}
+                    alt={job.jobTitle}
+                    variant="rounded"
+                  />
+                </td>
                 <td className="p-4">
                   <Typography
                     variant="small"

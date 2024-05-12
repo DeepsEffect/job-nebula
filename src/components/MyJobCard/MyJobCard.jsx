@@ -49,7 +49,7 @@ const MyJobCard = ({ job }) => {
     const jobDescription = form.description.value;
     const postingDate = startDate;
     const applicationDeadline = endDate;
-    const job = {
+    const updateJob = {
       jobTitle,
       bannerImg,
       user,
@@ -60,12 +60,27 @@ const MyJobCard = ({ job }) => {
       postingDate,
       applicationDeadline,
     };
-    console.table(job);
+    // console.table(job);
+    // send data to the backend
+    axios
+      .put(`${import.meta.env.VITE_SERVER_API_URL}/jobs/${job._id}`, updateJob)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+          return toast.success("Job Updated Successfully");
+        }
+        toast("No modification has been made");
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error(err.code);
+      });
   };
+
   return (
     <div className="m-5 relative border max-w-fit mx-auto">
       {/* modal */}
-      <div className="relative">
+      <div className="relative z-10">
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
