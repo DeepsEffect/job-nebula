@@ -1,10 +1,243 @@
-import { IconButton } from "@material-tailwind/react";
+import { Button, IconButton } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
-
+import Modal from "react-modal";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../providers/AuthProver";
+import axios from "axios";
+import toast from "react-hot-toast";
+import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker";
 /* eslint-disable react/prop-types */
+Modal.setAppElement("#root");
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    maxHeight: "80%",
+    overflowY: "auto",
+  },
+};
 const MyJobCard = ({ job }) => {
+  // modal
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const { user } = useContext(AuthContext);
+  //modal toggle
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
+  // handler
+  const handleUpdateJob = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const jobTitle = form.title.value;
+    const bannerImg = form.image.value;
+    const user = form.name.value;
+    const email = form.email.value;
+    const jobCategory = form.category.value;
+    const minSalary = parseFloat(form.minSalary.value);
+    const maxSalary = parseFloat(form.maxSalary.value);
+    const salaryRange = { minSalary, maxSalary };
+    const jobDescription = form.description.value;
+    const postingDate = startDate;
+    const applicationDeadline = endDate;
+    const job = {
+      jobTitle,
+      bannerImg,
+      user,
+      email,
+      jobCategory,
+      salaryRange,
+      jobDescription,
+      postingDate,
+      applicationDeadline,
+    };
+    console.table(job);
+  };
   return (
     <div className="m-5 relative border max-w-fit mx-auto">
+      {/* modal */}
+      <div className="relative">
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={customStyles}
+        >
+          <Button size="sm" color="red" onClick={closeModal}>
+            close
+          </Button>
+          <form
+            onSubmit={handleUpdateJob}
+            className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2"
+          >
+            {/* job title */}
+            <div>
+              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                Job Title
+              </label>
+              <input
+                defaultValue={job.jobTitle}
+                type="text"
+                name="title"
+                placeholder="what kind of job?"
+                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-primary dark:focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40"
+              />
+            </div>
+            {/* job banner */}
+            <div>
+              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                Job Banner Image
+              </label>
+              <input
+                defaultValue={job.bannerImg}
+                type="url"
+                name="image"
+                placeholder="Https://bannerImage.jpg"
+                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-primary dark:focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40"
+              />
+            </div>
+            {/* username */}
+            <div>
+              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                Username
+              </label>
+              <input
+                type="name"
+                name="name"
+                defaultValue={user?.displayName}
+                readOnly
+                placeholder="logged in Username"
+                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-primary dark:focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40"
+              />
+            </div>
+            {/* email */}
+            <div>
+              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                User Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                defaultValue={user?.email}
+                readOnly
+                placeholder="logged in user email"
+                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-primary dark:focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40"
+              />
+            </div>
+            {/* Job category */}
+            <div>
+              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                Job Category
+              </label>
+              <select
+                defaultValue={job.jobCategory}
+                name="category"
+                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-primary dark:focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40"
+              >
+                <option value="On-Site">On-Site</option>
+                <option value="remote">Remote</option>
+                <option value="Part-Time">Part-Time</option>
+                <option value="Hybrid">Hybrid</option>
+              </select>
+            </div>
+            {/* min/max salary section */}
+            <section className="flex gap-2">
+              {/* min salary */}
+              <div>
+                <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                  Minimum Salary
+                </label>
+                <input
+                  defaultValue={job.salaryRange.minSalary}
+                  type="number"
+                  name="minSalary"
+                  placeholder="min salary"
+                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-primary dark:focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40"
+                />
+              </div>
+              {/* max salary */}
+              <div>
+                <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                  Maximum Salary
+                </label>
+                <input
+                  defaultValue={job.salaryRange.maxSalary}
+                  type="number"
+                  name="maxSalary"
+                  placeholder="max salary"
+                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-primary dark:focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40"
+                />
+              </div>
+            </section>
+
+            {/* job description */}
+            <div className="lg:col-span-2">
+              <label className="block text-sm text-gray-500 dark:text-gray-300">
+                Job Description
+              </label>
+              <textarea
+                defaultValue={job.jobDescription}
+                maxLength={400}
+                name="description"
+                placeholder="describe your job..."
+                className="block  mt-2 w-full placeholder-gray-400/70 dark:placeholder-gray-500 rounded-lg border border-gray-200 bg-white px-4 h-32 py-2.5 text-gray-700 focus:border-primary focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-primary"
+              ></textarea>
+            </div>
+
+            {/* posting date */}
+            <div>
+              <label className="block text-sm text-gray-500 dark:text-gray-300">
+                Posting Date
+              </label>
+              <DatePicker
+                readOnly
+                className="block  mt-2 w-full placeholder-gray-400/70 dark:placeholder-gray-500 rounded-lg border border-gray-200 bg-white px-4  py-2.5 text-gray-700 focus:border-primary focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-primary"
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+              />
+            </div>
+            {/* deadline */}
+            <div>
+              <label className="block text-sm text-gray-500 dark:text-gray-300">
+                Application Deadline
+              </label>
+              <DatePicker
+                className="block  mt-2 w-full placeholder-gray-400/70 dark:placeholder-gray-500 rounded-lg border border-gray-200 bg-white px-4  py-2.5 text-gray-700 focus:border-primary focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-primary"
+                selected={endDate}
+                onChange={(date) => setEndDate(date)}
+              />
+            </div>
+            {/* post job */}
+            <button
+              type="submit"
+              className="flex items-center font-bold lg:col-span-2 justify-between w-full px-6 py-3 text-sm tracking-wide text-white uppercase transition-colors duration-300 transform bg-primary rounded-lg hover:bg-secondary focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-50"
+            >
+              <span className=" mx-auto">Update</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5 rtl:-scale-x-100"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+          </form>
+        </Modal>
+      </div>
+      {/* modal end */}
       <div className="group mx-2 grid max-w-screen-md grid-cols-12 space-x-8 overflow-hidden rounded-lg border py-8 text-gray-700 shadow transition hover:shadow-lg sm:mx-auto">
         <div className="order-2 col-span-1 mt-4 -ml-14 text-left sm:-order-1 sm:ml-4">
           <Link to={`/jobDetails/${job._id}`}>
@@ -63,7 +296,10 @@ const MyJobCard = ({ job }) => {
           </div>
           <section className="flex mt-4 gap-4">
             <div className="lg:absolute lg:-top-5 lg:-right-3">
-              <IconButton className="rounded-full bg-blue-400">
+              <IconButton
+                onClick={openModal}
+                className="rounded-full bg-blue-400"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
