@@ -26,7 +26,7 @@ const MyJobs = () => {
         {myJobs.length > 0 ? (
           <>
             {myJobs.map((myJob) => (
-              <MyJobCard key={myJob._id} job={myJob}></MyJobCard>
+              <MyJobCard key={myJob._id} job={myJob} myJobs={myJobs} setMyJobs={setMyJobs}></MyJobCard>
             ))}
           </>
         ) : (

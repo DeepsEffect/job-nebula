@@ -7,6 +7,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
+import Swal from "sweetalert2";
 /* eslint-disable react/prop-types */
 Modal.setAppElement("#root");
 const customStyles = {
@@ -21,7 +22,7 @@ const customStyles = {
     overflowY: "auto",
   },
 };
-const MyJobCard = ({ job }) => {
+const MyJobCard = ({ job, setMyJobs, myJobs }) => {
   // modal
   const [modalIsOpen, setIsOpen] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
@@ -34,7 +35,7 @@ const MyJobCard = ({ job }) => {
   function closeModal() {
     setIsOpen(false);
   }
-  // handler
+  // handle update
   const handleUpdateJob = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -75,6 +76,40 @@ const MyJobCard = ({ job }) => {
         console.error(err);
         toast.error(err.code);
       });
+  };
+
+  //handle delete
+  const handleDeleteJob = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`${import.meta.env.VITE_SERVER_API_URL}/jobs/${_id}`)
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Job has been deleted.",
+                icon: "success",
+              });
+            }
+            const remaining = myJobs?.filter((j) => j._id !== _id);
+            setMyJobs(remaining);
+          })
+          .catch((err) => {
+            console.error(err);
+            toast.error(err.code);
+          });
+      }
+    });
   };
 
   return (
@@ -332,7 +367,10 @@ const MyJobCard = ({ job }) => {
               </IconButton>
             </div>
             <div className="lg:absolute lg:top-10 lg:-right-3">
-              <IconButton className="rounded-full bg-red-400">
+              <IconButton
+                onClick={() => handleDeleteJob(job._id)}
+                className="rounded-full bg-red-400"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
