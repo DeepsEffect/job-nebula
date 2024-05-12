@@ -86,14 +86,14 @@ const JobByCategory = () => {
             </Tab>
           </TabList>
           <TabPanel>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 lg:grid-cols-2">
               {jobs.slice(0, 9).map((job) => (
                 <JobCard job={job} key={job._id}></JobCard>
               ))}
             </div>
           </TabPanel>
           <TabPanel>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 lg:grid-cols-2">
               {jobs
                 .filter((job) => job.jobCategory === "onSite")
                 .map((job) => (
@@ -102,7 +102,7 @@ const JobByCategory = () => {
             </div>
           </TabPanel>
           <TabPanel>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 lg:grid-cols-2">
               {jobs
                 .filter((job) => job.jobCategory === "remote")
                 .map((job) => (
@@ -111,7 +111,7 @@ const JobByCategory = () => {
             </div>
           </TabPanel>
           <TabPanel>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 lg:grid-cols-2">
               {jobs
                 .filter((job) => job.jobCategory === "partTime")
                 .map((job) => (
@@ -120,7 +120,7 @@ const JobByCategory = () => {
             </div>
           </TabPanel>
           <TabPanel>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 lg:grid-cols-2">
               {jobs
                 .filter((job) => job.jobCategory === "hybrid")
                 .map((job) => (
