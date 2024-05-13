@@ -52,7 +52,7 @@ const JobCard = ({ job }) => {
                 <div>
                   Applicants Number:
                   <span className="ml-2 mr-3 rounded-full bg-purple-100 px-2 py-0.5 text-purple-900">
-                    {0}
+                    {job.job_applicants}
                   </span>
                 </div>
               </section>

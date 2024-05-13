@@ -36,15 +36,21 @@ const JobDetails = () => {
     e.preventDefault();
     const currentDate = new Date();
     const form = e.target;
+    const jobId = jobs._id;
     const applicantName = form.name.value;
     const applicantEmail = form.email.value;
     const applicantResume = form.resume.value;
     const appliedDate = currentDate;
-    const applicantsInfo = { applicantName, applicantEmail, applicantResume, appliedDate };
+    const applicantsInfo = {
+      applicantName,
+      applicantEmail,
+      applicantResume,
+      appliedDate,
+    };
     // Remove the _id field from the jobs object
     // eslint-disable-next-line no-unused-vars
     const { _id, ...jobData } = jobs;
-    const applicantsJobInfo = { ...jobData, applicantsInfo };
+    const applicantsJobInfo = { ...jobData, jobId, applicantsInfo };
     // console.log(applicantsJobInfo);
 
     // Check if the deadline is over
@@ -77,7 +83,7 @@ const JobDetails = () => {
       })
       .catch((err) => {
         console.error(err);
-        toast.error(err.code);
+        toast.error(err.response.data);
       });
   };
 
@@ -203,7 +209,7 @@ const JobDetails = () => {
             <div className="mt-2 lg:font-medium mb-4">
               Applicants Number:
               <span className="ml-2 mr-3 rounded-full bg-purple-100 px-2 py-0.5 text-purple-900">
-                {0}
+                {jobs.job_applicants}
               </span>
             </div>
             <Button
