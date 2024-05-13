@@ -3,6 +3,8 @@ import { useContext, useState } from "react";
 import { ScrollRestoration, useLoaderData } from "react-router-dom";
 import Modal from "react-modal";
 import { AuthContext } from "../../providers/AuthProver";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const customStyles = {
   content: {
@@ -20,29 +22,69 @@ const customStyles = {
 const JobDetails = () => {
   const jobs = useLoaderData();
   const { user } = useContext(AuthContext);
-  let subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
     setIsOpen(true);
   }
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = "#f00";
-  }
-
   function closeModal() {
     setIsOpen(false);
   }
-  //handle apply
-  // const handleApplyJob = () => {};
+  //handle submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const applicantName = form.name.value;
+    const applicantEmail = form.email.value;
+    const applicantResume = form.resume.value;
+    const applicantsInfo = { applicantName, applicantEmail, applicantResume };
+    // Remove the _id field from the jobs object
+    // eslint-disable-next-line no-unused-vars
+    const { _id, ...jobData } = jobs;
+    const applicantsJobInfo = { ...jobData, applicantsInfo };
+    // console.log(applicantsJobInfo);
+
+    // Check if the deadline is over
+    const currentDate = new Date();
+    const deadline = new Date(jobs.applicationDeadline);
+    if (currentDate > deadline) {
+      return toast.error(
+        "Application deadline is over. You cannot apply for this job."
+      );
+    }
+    // Check if the applicant is the employer
+    if (
+      jobs.user === applicantsInfo.applicantName &&
+      jobs.email === applicantsInfo.applicantEmail
+    ) {
+      return toast.error("You cannot apply for your own job!");
+    }
+
+    // send data to the backend
+    axios
+      .post(
+        `${import.meta.env.VITE_SERVER_API_URL}/applicants`,
+        applicantsJobInfo
+      )
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          closeModal();
+          return toast.success("Application Submitted Successfully");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error(err.code);
+      });
+  };
+
   return (
     <section className="bg-white dark:bg-gray-900">
       {/* modal */}
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
@@ -50,7 +92,7 @@ const JobDetails = () => {
         <Button variant="outlined" size="sm" color="red" onClick={closeModal}>
           close
         </Button>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
               <label className="text-gray-700 dark:text-gray-200">
@@ -59,6 +101,7 @@ const JobDetails = () => {
               <input
                 defaultValue={user.displayName}
                 readOnly
+                name="name"
                 type="text"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-primary focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
@@ -71,23 +114,29 @@ const JobDetails = () => {
               <input
                 defaultValue={user.email}
                 readOnly
+                name="email"
                 type="email"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-primary focus:ring-opacity-40 dark:focus:border-primary focus:outline-none focus:ring"
               />
             </div>
             <div className="col-span-2">
               <label className="text-gray-700 dark:text-gray-200">
-                CV link
+                Resume link
               </label>
               <input
+                required
                 type="url"
+                name="resume"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-primary focus:ring-opacity-40 dark:focus:border-primary focus:outline-none focus:ring"
               />
             </div>
           </div>
 
           <div className="flex justify-end mt-6">
-            <Button className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-primary rounded-md hover:bg-secondary focus:outline-none focus:bg-secondary">
+            <Button
+              type="submit"
+              className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-primary rounded-md hover:bg-secondary focus:outline-none focus:bg-secondary"
+            >
               Submit
             </Button>
           </div>
