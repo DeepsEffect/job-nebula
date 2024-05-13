@@ -1,4 +1,11 @@
-import { Avatar, Button, Card, Typography } from "@material-tailwind/react";
+import {
+  Avatar,
+  Button,
+  Card,
+  Option,
+  Select,
+  Typography,
+} from "@material-tailwind/react";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProver";
@@ -6,7 +13,7 @@ import { AuthContext } from "../../providers/AuthProver";
 const AppliedJobs = () => {
   const [jobs, setJobs] = useState([]);
   const { user } = useContext(AuthContext);
-  //   const [searchQuery, setSearchQuery] = useState("");
+  const [jobCategory, setJobCategory] = useState("");
 
   //getting the data from DB
   useEffect(() => {
@@ -26,11 +33,30 @@ const AppliedJobs = () => {
     "Status",
   ];
 
+  // filter by job category
+  const filteredJobs = jobCategory
+    ? jobs.filter((job) => job.jobCategory === jobCategory)
+    : jobs;
   return (
     <div>
       <div className="bg-primary min-h-[400px] text-center text-white flex flex-col justify-center items-center">
         <h2 className="text-4xl font-bold">Applied Jobs</h2>
         <p>Find all the jobs you applied for in one place</p>
+        <div className="w-72 mt-4">
+          <Select
+            label="Filter by job category"
+            color="purple"
+            className="text-white"
+            value={jobCategory}
+            onChange={(val) => setJobCategory(val)}
+          >
+            <Option value="">All</Option>
+            <Option value="On-Site">On-SIte</Option>
+            <Option value="Remote">Remote</Option>
+            <Option value="Part-Time">Part-Time</Option>
+            <Option value="Hybrid">Hybrid</Option>
+          </Select>
+        </div>
       </div>
       <Card className="h-full w-full overflow-scroll lg:overflow-hidden  mt-10">
         <table className="w-full min-w-max table-auto text-left">
@@ -53,7 +79,7 @@ const AppliedJobs = () => {
             </tr>
           </thead>
           <tbody>
-            {jobs?.map((job) => (
+            {filteredJobs?.map((job) => (
               <tr key={job._id} className="even:bg-blue-gray-50/50">
                 <td className="p-4">
                   <Avatar
