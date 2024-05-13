@@ -34,11 +34,13 @@ const JobDetails = () => {
   //handle submit
   const handleSubmit = (e) => {
     e.preventDefault();
+    const currentDate = new Date();
     const form = e.target;
     const applicantName = form.name.value;
     const applicantEmail = form.email.value;
     const applicantResume = form.resume.value;
-    const applicantsInfo = { applicantName, applicantEmail, applicantResume };
+    const appliedDate = currentDate;
+    const applicantsInfo = { applicantName, applicantEmail, applicantResume, appliedDate };
     // Remove the _id field from the jobs object
     // eslint-disable-next-line no-unused-vars
     const { _id, ...jobData } = jobs;
@@ -46,7 +48,6 @@ const JobDetails = () => {
     // console.log(applicantsJobInfo);
 
     // Check if the deadline is over
-    const currentDate = new Date();
     const deadline = new Date(jobs.applicationDeadline);
     if (currentDate > deadline) {
       return toast.error(
@@ -157,7 +158,7 @@ const JobDetails = () => {
           <img
             className="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96"
             src={jobs.bannerImg}
-            alt=""
+            alt={jobs.jobTitle}
           />
 
           <div className="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
