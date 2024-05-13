@@ -23,8 +23,15 @@ const JobCard = ({ job }) => {
             <p className="mb-3 overflow-hidden pr-7 text-sm font-base sm:text-sm">
               Posted By: {job?.user}
             </p>
-            <p className="overflow-hidden pr-7 text-sm text-gray-500">
-              {job.jobDescription.substring(0, 200)}...
+            <p
+              title={job.jobDescription}
+              className="overflow-hidden pr-7 text-sm text-gray-500"
+            >
+              {job.jobDescription.length > 200 ? (
+                <>{job.jobDescription.substring(0, 200)}...</>
+              ) : (
+                <>{job.jobDescription}</>
+              )}
             </p>
 
             <div className="mt-5 flex flex-col space-y-3 text-sm font-medium text-gray-500 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-2">
