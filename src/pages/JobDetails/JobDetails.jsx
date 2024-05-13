@@ -1,10 +1,100 @@
 import { Button } from "@material-tailwind/react";
-import { Link, ScrollRestoration, useLoaderData } from "react-router-dom";
+import { useContext, useState } from "react";
+import { ScrollRestoration, useLoaderData } from "react-router-dom";
+import Modal from "react-modal";
+import { AuthContext } from "../../providers/AuthProver";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    maxHeight: "80%",
+    overflowY: "auto",
+  },
+};
 
 const JobDetails = () => {
   const jobs = useLoaderData();
+  const { user } = useContext(AuthContext);
+  let subtitle;
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = "#f00";
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+  //handle apply
+  // const handleApplyJob = () => {};
   return (
     <section className="bg-white dark:bg-gray-900">
+      {/* modal */}
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <Button variant="outlined" size="sm" color="red" onClick={closeModal}>
+          close
+        </Button>
+        <form>
+          <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+            <div>
+              <label className="text-gray-700 dark:text-gray-200">
+                Username
+              </label>
+              <input
+                defaultValue={user.displayName}
+                readOnly
+                type="text"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-primary focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+              />
+            </div>
+
+            <div>
+              <label className="text-gray-700 dark:text-gray-200">
+                Email Address
+              </label>
+              <input
+                defaultValue={user.email}
+                readOnly
+                type="email"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-primary focus:ring-opacity-40 dark:focus:border-primary focus:outline-none focus:ring"
+              />
+            </div>
+            <div className="col-span-2">
+              <label className="text-gray-700 dark:text-gray-200">
+                CV link
+              </label>
+              <input
+                type="url"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-primary focus:ring-opacity-40 dark:focus:border-primary focus:outline-none focus:ring"
+              />
+            </div>
+          </div>
+
+          <div className="flex justify-end mt-6">
+            <Button className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-primary rounded-md hover:bg-secondary focus:outline-none focus:bg-secondary">
+              Submit
+            </Button>
+          </div>
+        </form>
+      </Modal>
+      {/* modal end */}
+
       <ScrollRestoration></ScrollRestoration>
       <div className="bg-primary min-h-[400px] text-center text-white flex flex-col justify-center items-center">
         <h2 className="text-4xl font-bold">Job Details for: {jobs.jobTitle}</h2>
@@ -40,12 +130,6 @@ const JobDetails = () => {
               {jobs.jobDescription}
             </p>
 
-            {/* <a
-              href="#"
-              className="inline-block mt-2 text-blue-500 underline hover:text-blue-400"
-            >
-              Read more
-            </a> */}
             <div className="mt-2 lg:font-medium">
               Salary:
               <span className="ml-2 mr-3 rounded-full bg-blue-100 px-2 py-0.5 text-blue-900">
@@ -72,11 +156,13 @@ const JobDetails = () => {
                 {0}
               </span>
             </div>
-            <Link>
-              <Button className="bg-primary hover:bg-secondary">
-                Apply Now
-              </Button>
-            </Link>
+            <Button
+              onClick={openModal}
+              type="button"
+              className="bg-primary hover:bg-secondary"
+            >
+              Apply Now
+            </Button>
           </div>
         </div>
       </div>

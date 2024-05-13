@@ -68,6 +68,7 @@ const MyJobCard = ({ job, setMyJobs, myJobs }) => {
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount > 0) {
+          closeModal();
           return toast.success("Job Updated Successfully");
         }
         toast("No modification has been made");
@@ -121,7 +122,7 @@ const MyJobCard = ({ job, setMyJobs, myJobs }) => {
           onRequestClose={closeModal}
           style={customStyles}
         >
-          <Button size="sm" color="red" onClick={closeModal}>
+          <Button variant="outlined" size="sm" color="red" onClick={closeModal}>
             close
           </Button>
           <form
@@ -265,12 +266,12 @@ const MyJobCard = ({ job, setMyJobs, myJobs }) => {
                 onChange={(date) => setEndDate(date)}
               />
             </div>
-            {/* post job */}
+            {/* update job */}
             <button
               type="submit"
               className="flex items-center font-bold lg:col-span-2 justify-between w-full px-6 py-3 text-sm tracking-wide text-white uppercase transition-colors duration-300 transform bg-primary rounded-lg hover:bg-secondary focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-50"
             >
-              <span className=" mx-auto">Update</span>
+              <span className=" mx-auto">Update Job</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-5 h-5 rtl:-scale-x-100"

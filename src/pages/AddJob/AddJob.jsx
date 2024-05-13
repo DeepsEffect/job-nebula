@@ -36,6 +36,7 @@ const AddJob = () => {
       jobDescription,
       postingDate,
       applicationDeadline,
+      job_applicants: 0,
     };
     // console.table(job);
 
