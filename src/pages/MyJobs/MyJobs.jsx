@@ -16,7 +16,7 @@ const MyJobs = () => {
   return (
     <div>
       <div className="bg-primary min-h-[400px] text-center text-white flex flex-col justify-center items-center">
-        <h2 className="text-4xl font-bold">Your Added Jobs</h2>
+        <h2 className="text-4xl font-bold">My Added Jobs</h2>
         <p>
           Browse the job you have added. You can also edit and delete them from
           here.
@@ -31,7 +31,7 @@ const MyJobs = () => {
           </>
         ) : (
           <div className="flex flex-col justify-center items-center mt-4 lg:mt-10">
-            <p>You haven&apos;s added jobs yet.</p>
+            <p>You haven&apos;t added any jobs yet.</p>
             <Link to={"/addAJob"}>
               <Button className="bg-primary hover:bg-secondary">Add Job</Button>
             </Link>
