@@ -1,8 +1,19 @@
-# React + Vite
+# Job Nebula
+[job Nebula](https://job-nebula.web.app/)
+This a site where user can create, post, and apply for different jobs
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Job Categories:
 
-Currently, two official plugins are available:
+- On-Site Job
+- Remote Job
+- Hybrid
+- Part-Time
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Packages used for this project:
+- swiper-slider
+- react-hot-toast
+- react-tabs
+- sweetalert2
+- react-modal and more...
+
+Backend made with expressJS & MongoDB

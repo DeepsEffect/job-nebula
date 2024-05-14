@@ -75,7 +75,7 @@ const Footer = () => {
               >
                 Software Development
               </Link>
-            </div>g
+            </div>
           </div>
         </div>
 
