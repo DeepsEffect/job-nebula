@@ -11,13 +11,13 @@ const JobCard = ({ job }) => {
               <img
                 src={job?.bannerImg}
                 alt={job.jobTitle}
-                className="h-full w-full object-cover text-gray-700 box-border"
+                className="h-full w-full object-cover text-gray-700 box-border "
               />
             </div>
           </div>
           <div className="col-span-11 flex flex-col pr-8 text-left sm:pl-4">
             <h3 className="text-sm text-gray-600">{job?.jobCategory}</h3>
-            <div className="overflow-hidden pr-7 text-lg font-semibold sm:text-xl">
+            <div className="overflow-hidden pr-7 text-lg font-semibold sm:text-xl font-heading">
               {job.jobTitle}
             </div>
             <p className="mb-3 overflow-hidden pr-7 text-sm font-base sm:text-sm">

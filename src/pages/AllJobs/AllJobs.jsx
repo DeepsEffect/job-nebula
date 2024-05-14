@@ -68,7 +68,7 @@ const AllJobs = () => {
   return (
     <div>
       <div className="bg-primary min-h-[400px] text-center text-white flex flex-col justify-center items-center">
-        <h2 className="text-4xl font-bold">Job Listing</h2>
+        <h2 className="text-4xl font-heading font-bold">Job Listing</h2>
         <p>Find all your desired job in one place</p>
         {/* search field */}
         <div className="relative mt-4">
@@ -104,7 +104,7 @@ const AllJobs = () => {
               {TABLE_HEAD.map((head) => (
                 <th
                   key={head}
-                  className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
+                  className="border-b border-blue-gray-100 bg-blue-gray-50 p-4 "
                 >
                   <Typography
                     variant="small"

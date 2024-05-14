@@ -4,7 +4,7 @@ import Footer from "../components/Footer/Footer";
 
 const Main = () => {
   return (
-    <div>
+    <div className="font-body">
       <Nav></Nav>
       <div className="min-h-[calc(100svh-59.95px)]">
         <Outlet></Outlet>

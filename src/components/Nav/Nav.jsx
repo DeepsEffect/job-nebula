@@ -23,7 +23,7 @@ import toast from "react-hot-toast";
 
 function NavList() {
   return (
-    <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1 text-white ">
+    <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1 text-white font-heading">
       <NavLink to={"/"}>
         <ListItem className="flex items-center gap-2 py-2 pr-4  hover:bg-transparent hover:text-white focus:bg-transparent focus:text-white active:bg-transparent active:text-white">
           Home
@@ -50,7 +50,9 @@ function NavList() {
         </ListItem>
       </NavLink>
       <NavLink to={"blogs"}>
-        <ListItem className="flex items-center gap-2 py-2 pr-4 hover:bg-transparent hover:text-white focus:bg-transparent focus:text-white active:bg-transparent active:text-white">Blogs</ListItem>
+        <ListItem className="flex items-center gap-2 py-2 pr-4 hover:bg-transparent hover:text-white focus:bg-transparent focus:text-white active:bg-transparent active:text-white">
+          Blogs
+        </ListItem>
       </NavLink>
     </List>
   );
@@ -83,7 +85,7 @@ function Nav() {
       <div className="flex px-8 lg:px-24 mx-auto items-center justify-between text-text">
         <Link
           to={"/"}
-          className="mr-4 cursor-pointer py-1.5 lg:ml-2 font-bold text-xl lg:text-2xl text-white drop-shadow-lg"
+          className="mr-4 cursor-pointer py-1.5 lg:ml-2 font-bold text-xl lg:text-2xl text-white font-heading drop-shadow-lg"
         >
           Job <span className="">Nebula</span>
         </Link>
@@ -184,12 +186,17 @@ function Nav() {
             <>
               <section className="space-x-2">
                 <Link to={"/login"}>
-                  <Button className="border-secondary" variant="outlined" color="white" size="sm">
+                  <Button
+                    className="border-secondary"
+                    variant="outlined"
+                    color="white"
+                    size="sm"
+                  >
                     Log In
                   </Button>
                 </Link>
                 <Link to={"/signIn"}>
-                  <Button className="bg-accent"  size="sm">
+                  <Button className="bg-accent" size="sm">
                     Sign In
                   </Button>
                 </Link>
@@ -199,7 +206,7 @@ function Nav() {
         </div>
         <IconButton
           variant="text"
-          // color="blue-gray"
+          color="white"
           className="lg:hidden"
           onClick={() => setOpenNav(!openNav)}
         >
@@ -213,12 +220,21 @@ function Nav() {
       <Collapse open={openNav}>
         <NavList />
         <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
-          <Button className="text-white border-secondary" variant="outlined" size="sm" fullWidth>
-            Log In
-          </Button>
-          <Button className="bg-accent" size="sm" fullWidth>
-            Sign In
-          </Button>
+          <Link className="w-full" to={"/login"}>
+            <Button
+              className="text-white border-secondary"
+              variant="outlined"
+              size="sm"
+              fullWidth
+            >
+              Log In
+            </Button>
+          </Link>
+          <Link className="w-full" to={"/signIn"}>
+            <Button className="bg-accent" size="sm" fullWidth>
+              Sign In
+            </Button>
+          </Link>
         </div>
       </Collapse>
     </section>

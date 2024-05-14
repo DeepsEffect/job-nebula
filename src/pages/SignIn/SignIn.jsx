@@ -78,7 +78,7 @@ const SignIn = () => {
   return (
     <section className="lg:mb-20">
       <div className="bg-primary min-h-[400px] text-center text-white flex flex-col justify-center items-center">
-        <h2 className="text-4xl font-bold">Register</h2>
+        <h2 className="text-4xl font-bold font-heading">Register</h2>
         <p>Create an account & Start posting or applying for jobs</p>
       </div>
       <div className="flex w-full lg:mt-20 max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
@@ -97,7 +97,7 @@ const SignIn = () => {
             <img src="" alt="" />
           </div>
 
-          <p className="mt-3 text-xl text-center text-gray-600 dark:text-gray-200 font-bold">
+          <p className="mt-3 text-xl text-center text-gray-600 dark:text-gray-200 font-bold font-heading">
             Welcome!
           </p>
 

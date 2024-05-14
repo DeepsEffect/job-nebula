@@ -2,7 +2,7 @@ const Blog = () => {
   return (
     <div className="container mx-auto py-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-4">
+        <h1 className="text-3xl font-bold mb-4 font-heading">
           Exploring Web Development: Understanding Access Tokens, Refresh
           Tokens, Express.js, and Nest.js
         </h1>
@@ -13,7 +13,7 @@ const Blog = () => {
             alt="Access Tokens"
             className="w-full mb-4 rounded-lg"
           />
-          <h2 className="text-2xl font-bold mb-2">
+          <h2 className="text-2xl font-bold mb-2 font-heading">
             Understanding Access Tokens and Refresh Tokens
           </h2>
           <p className="mb-4">
@@ -35,7 +35,7 @@ const Blog = () => {
             alt="Express.js"
             className="w-full mb-4 rounded-lg object-cover"
           />
-          <h2 className="text-2xl font-bold mb-2">Exploring Express.js</h2>
+          <h2 className="text-2xl font-bold mb-2 font-heading">Exploring Express.js</h2>
           <p className="mb-4">
             Express.js is a minimalist web application framework for Node.js. It
             simplifies the process of building web servers and APIs by providing
@@ -54,7 +54,7 @@ const Blog = () => {
             alt="Nest.js"
             className="w-full mb-4 rounded-lg"
           />
-          <h2 className="text-2xl font-bold mb-2">Introduction to Nest.js</h2>
+          <h2 className="text-2xl font-bold mb-2 font-heading">Introduction to Nest.js</h2>
           <p className="mb-4">
             Nest.js is a progressive Node.js framework for building efficient,
             reliable, and scalable server-side applications. Inspired by
@@ -69,7 +69,7 @@ const Blog = () => {
         </div>
 
         <div className="my-8">
-          <h2 className="text-2xl font-bold mb-2">Explain Code</h2>
+          <h2 className="text-2xl font-bold mb-2 font-heading">Explain Code</h2>
           <p className="mb-4">
             In this section, we&apos;ll provide a walkthrough of code snippets
             related to the topics discussed earlier. We&apos;ll explain the

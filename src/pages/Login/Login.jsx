@@ -4,48 +4,45 @@ import { useContext } from "react";
 import toast from "react-hot-toast";
 
 const Login = () => {
+  const { loginUser, signInWithGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const { loginUser, signInWithGoogle } =
-  useContext(AuthContext);
-const navigate = useNavigate();
-const location = useLocation();
-
-const handleLoginUser = (e) => {
-  e.preventDefault();
-  const form = e.target;
-  const email = form.email.value;
-  const password = form.password.value;
-  // console.log(email, password);
-  loginUser(email, password)
-    .then((userCredential) => {
-      // console.log(userCredential.user);
-      toast.success(`"${userCredential.user.displayName}" Login Successful`);
-      navigate(location?.state ? location.state : "/");
-    })
-    .catch((error) => {
-      console.error(error);
-      toast.error(error.code);
-    });
-};
-//handle google sign in
-const handleSignInWithGoogle = () => {
-  signInWithGoogle()
-    .then((userCredential) => {
-      console.log(userCredential.user);
-      toast.success("Successfully Signed In with Google");
-      navigate(location?.state ? location.state : "/");
-    })
-    .catch((error) => {
-      console.error(error);
-      toast.error(error.code);
-    });
-};
-
+  const handleLoginUser = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    // console.log(email, password);
+    loginUser(email, password)
+      .then((userCredential) => {
+        // console.log(userCredential.user);
+        toast.success(`"${userCredential.user.displayName}" Login Successful`);
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.error(error);
+        toast.error(error.code);
+      });
+  };
+  //handle google sign in
+  const handleSignInWithGoogle = () => {
+    signInWithGoogle()
+      .then((userCredential) => {
+        console.log(userCredential.user);
+        toast.success("Successfully Signed In with Google");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.error(error);
+        toast.error(error.code);
+      });
+  };
 
   return (
     <section>
       <div className="bg-primary min-h-[400px] text-center text-white flex flex-col justify-center items-center">
-        <h2 className="text-4xl font-bold">Login</h2>
+        <h2 className="text-4xl font-bold font-heading">Login</h2>
         <p>Login to your account & Start posting or applying for jobs</p>
       </div>
 
@@ -73,7 +70,7 @@ const handleSignInWithGoogle = () => {
           >
             <div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
               <div>
-                <h2 className="text-2xl font-bold text-white sm:text-3xl">
+                <h2 className="text-2xl font-bold text-white sm:text-3xl font-heading">
                   Hi, Welcome Back!
                 </h2>
 
@@ -89,15 +86,15 @@ const handleSignInWithGoogle = () => {
           <div className="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6">
             <div className="flex-1">
               <div className="text-center">
-                <div className="flex justify-center mx-auto">
-                  <img src="" alt="" />{" "}
-                </div>
-                <p className="mt-3 text-gray-500 dark:text-gray-300">
+                <p className="lg:mt-3 text-gray-500 dark:text-gray-300">
                   Sign in to access your account
                 </p>
 
                 {/* sign in with google */}
-                <button onClick={handleSignInWithGoogle} className="flex items-center w-full justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <button
+                  onClick={handleSignInWithGoogle}
+                  className="flex items-center w-full justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
+                >
                   <div className="px-4 py-2">
                     <svg className="w-6 h-6" viewBox="0 0 40 40">
                       <path

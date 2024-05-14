@@ -8,7 +8,7 @@ const Hero = ({ title, description, imageUrl }) => {
         <div className="items-center lg:flex ">
           <div className="w-full lg:w-1/2">
             <div className="lg:max-w-lg">
-              <h1 className="text-2xl font-semibold text-white dark:text-white lg:text-4xl">
+              <h1 className="text-2xl font-semibold text-white dark:text-white lg:text-4xl font-heading">
                 {title}
               </h1>
 

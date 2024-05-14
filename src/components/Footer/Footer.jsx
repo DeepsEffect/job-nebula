@@ -4,7 +4,7 @@ const Footer = () => {
       <div className=" px-6 py-12 mx-auto">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
           <div className="sm:col-span-2">
-            <h1 className="max-w-lg text-xl font-semibold tracking-tight text-gray-800 xl:text-2xl dark:text-white">
+            <h1 className="max-w-lg text-xl font-semibold tracking-tight text-gray-800 xl:text-2xl dark:text-white font-heading">
               Subscribe our newsletter to get update.
             </h1>
 
@@ -80,7 +80,7 @@ const Footer = () => {
         <hr className="my-6 border-gray-200 md:my-8 dark:border-gray-700" />
 
         <div className="flex items-center justify-between">
-          <h2 className="font-medium lg:font-bold text-xl lg:text-2xl">
+          <h2 className="font-medium lg:font-bold text-xl lg:text-2xl font-heading">
             {/* <img
               className="w-auto h-7"
               src="https://merakiui.com/images/full-logo.svg"

@@ -22,7 +22,7 @@ const JobByCategory = () => {
   return (
     <section className="lg:mt-10">
       <div className="text-center ">
-        <h2 className="text-xl lg:text-3xl font-bold ">
+        <h2 className="text-xl lg:text-3xl font-bold font-heading">
           Search your desired job by these categories
         </h2>
         <p className="text-base">
@@ -39,7 +39,7 @@ const JobByCategory = () => {
                 variant="text"
                 size="md"
                 ripple={false}
-                className="hover:bg-transparent active:bg-transparent border-none"
+                className="hover:bg-transparent active:bg-transparent border-none font-heading"
               >
                 All Jobs
               </Button>
@@ -49,7 +49,7 @@ const JobByCategory = () => {
                 variant="text"
                 size="md"
                 ripple={false}
-                className="hover:bg-transparent active:bg-transparent border-none"
+                className="hover:bg-transparent active:bg-transparent border-none font-heading"
               >
                 On-Site Job
               </Button>
@@ -59,7 +59,7 @@ const JobByCategory = () => {
                 variant="text"
                 size="md"
                 ripple={false}
-                className="hover:bg-transparent active:bg-transparent border-none"
+                className="hover:bg-transparent active:bg-transparent border-none font-heading"
               >
                 Remote Job
               </Button>
@@ -69,7 +69,7 @@ const JobByCategory = () => {
                 variant="text"
                 size="md"
                 ripple={false}
-                className="hover:bg-transparent active:bg-transparent border-none"
+                className="hover:bg-transparent active:bg-transparent border-none font-heading"
               >
                 Part-time
               </Button>
@@ -79,7 +79,7 @@ const JobByCategory = () => {
                 variant="text"
                 size="md"
                 ripple={false}
-                className="hover:bg-transparent active:bg-transparent border-none"
+                className="hover:bg-transparent active:bg-transparent border-none font-heading"
               >
                 Hybrid
               </Button>

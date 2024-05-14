@@ -52,7 +52,7 @@ export default function Banner() {
         loop={true}
         autoplay={{
           delay: 4000,
-          disableOnInteraction: true,
+          disableOnInteraction: false,
           pauseOnMouseEnter: true,
         }}
         pagination={{
