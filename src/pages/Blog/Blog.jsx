@@ -1,6 +1,6 @@
 const Blog = () => {
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8 text-text">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-4 font-heading">
           Exploring Web Development: Understanding Access Tokens, Refresh

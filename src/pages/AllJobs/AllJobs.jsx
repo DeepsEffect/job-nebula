@@ -170,7 +170,7 @@ const AllJobs = () => {
                     <Link to={`/jobDetails/${job._id}`}>
                       <Button
                         size="sm"
-                        className="font-medium bg-primary hover:bg-secondary"
+                        className="font-medium bg-secondary hover:bg-secondary"
                       >
                         View Details
                       </Button>

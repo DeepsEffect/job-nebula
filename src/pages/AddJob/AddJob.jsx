@@ -68,7 +68,7 @@ const AddJob = () => {
         <h2 className="text-4xl font-bold font-heading">Post A Job</h2>
         <p>Please fill the form below to post a job</p>
       </div>
-      <div className="flex justify-center min-h-screen">
+      <div className="flex justify-center min-h-screen ">
         <div
           className="hidden bg-cover lg:block lg:w-2/5"
           style={{
@@ -233,9 +233,9 @@ const AddJob = () => {
               )}
               <button
                 type="submit"
-                className="flex items-center font-bold lg:col-span-2 justify-between w-full px-6 py-3 text-sm tracking-wide text-white uppercase transition-colors duration-300 transform bg-primary rounded-lg hover:bg-secondary focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-50"
+                className="flex items-center font-bold lg:col-span-2 justify-between w-full px-6 py-3 text-sm tracking-wide text-white uppercase transition-colors duration-300 transform bg-secondary rounded-lg hover:bg-[#991aafdd] focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-50"
               >
-                <span className=" mx-auto">Post Job</span>
+                <span className="mx-auto">Post Job</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-5 h-5 rtl:-scale-x-100"

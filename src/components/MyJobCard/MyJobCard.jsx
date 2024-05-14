@@ -269,7 +269,7 @@ const MyJobCard = ({ job, setMyJobs, myJobs }) => {
             {/* update job */}
             <button
               type="submit"
-              className="flex items-center font-bold lg:col-span-2 justify-between w-full px-6 py-3 text-sm tracking-wide text-white uppercase transition-colors duration-300 transform bg-primary rounded-lg hover:bg-secondary focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-50"
+              className="flex items-center font-bold lg:col-span-2 justify-between w-full px-6 py-3 text-sm tracking-wide text-white uppercase transition-colors duration-300 transform bg-secondary rounded-lg hover:bg-[#991aafdf] focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-50"
             >
               <span className=" mx-auto">Update Job</span>
               <svg
@@ -289,7 +289,7 @@ const MyJobCard = ({ job, setMyJobs, myJobs }) => {
         </Modal>
       </div>
       {/* modal end */}
-      <div className="group mx-2 grid max-w-screen-md grid-cols-12 space-x-8 overflow-hidden rounded-lg border py-8 text-gray-700 shadow transition hover:shadow-lg sm:mx-auto">
+      <div className="group mx-2 grid max-w-screen-md grid-cols-12 space-x-8 overflow-hidden rounded-lg border py-8 text-text shadow transition hover:shadow-lg sm:mx-auto">
         <div className="order-2 col-span-1 mt-4 -ml-14 text-left sm:-order-1 sm:ml-4">
           <Link to={`/jobDetails/${job._id}`}>
             <div className="group relative h-16 w-16 overflow-hidden rounded-lg">
@@ -304,14 +304,14 @@ const MyJobCard = ({ job, setMyJobs, myJobs }) => {
         <div className="col-span-11 flex flex-col pr-8 text-left sm:pl-4">
           <h3 className="text-sm text-gray-600">{job?.jobCategory}</h3>
           <Link to={`/jobDetails/${job._id}`}>
-            <div className="overflow-hidden pr-7 text-lg font-semibold sm:text-xl">
+            <div className="overflow-hidden pr-7 text-lg font-semibold sm:text-xl font-heading">
               {job.jobTitle}
             </div>
           </Link>
           <p className="mb-3 overflow-hidden pr-7 text-sm font-base sm:text-sm">
             Posted By: {job?.user}
           </p>
-          <p className="overflow-hidden pr-7 text-sm text-gray-500">
+          <p className="overflow-hidden pr-7 text-sm ">
             {job.jobDescription.substring(0, 200)}...
           </p>
 
