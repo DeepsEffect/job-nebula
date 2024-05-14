@@ -84,7 +84,7 @@ function Nav() {
       <div className="flex px-8 lg:px-24 mx-auto items-center justify-between text-text">
         <Link
           to={"/"}
-          className="mr-4 cursor-pointer py-1.5 lg:ml-2 font-bold text-xl lg:text-2xl text-white font-heading drop-shadow-lg flex items-center justify-center gap-2"
+          className="mr-4 cursor-pointer py-1.5 lg:ml-2 font-bold text-xl lg:text-xl text-white font-heading drop-shadow-lg flex items-center justify-center gap-2"
         >
           <img className="w-[30px] rounded-lg" src="logo.png" alt="logo" />
           Job <span className="">Nebula</span>

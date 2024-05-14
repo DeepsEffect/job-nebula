@@ -82,8 +82,8 @@ const Footer = () => {
         <hr className="my-6 border-gray-200 md:my-8 dark:border-gray-700" />
 
         <div className="flex items-center justify-between">
-          <h2 className="font-medium lg:font-bold text-xl lg:text-2xl font-heading flex items-center justify-center gap-2">
-            <img className="w-auto h-10 rounded-lg" src="logo.png" alt="" />
+          <h2 className="font-medium lg:font-bold text-xl lg:text-xl font-heading flex items-center justify-center gap-2">
+            <img className="w-auto h-[30px] rounded-lg" src="logo.png" alt="" />
             Job Nebula
           </h2>
 
