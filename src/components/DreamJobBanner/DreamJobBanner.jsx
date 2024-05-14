@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const DreamJobBanner = () => {
   return (
-    <div className="lg:mt-20">
+    <div className="lg:mt-24">
       <div className="mx-auto h-full px-4 py-10 sm:max-w-xl md:max-w-full md:px-24  lg:px-24">
         <div className="flex flex-col items-center justify-between lg:flex-row">
           <div className="">
@@ -23,14 +23,14 @@ const DreamJobBanner = () => {
             </div>
             <div className="mt-10 flex flex-col items-center md:flex-row">
               <Link to={"/allJobs"}>
-                <Button className="bg-primary hover:bg-secondary mr-4">
+                <Button variant="outlined" className="border-primary text-primary hover:border-secondary hover:text-secondary mr-4">
                   Apply Now
                 </Button>
               </Link>
               <Link
                 to={"/blogs"}
                 aria-label=""
-                className="underline-offset-2 inline-flex items-center font-semibold text-primary underline transition-colors duration-200 hover:underline"
+                className="underline-offset-2 inline-flex items-center font-semibold text-primary underline transition-colors duration-200 hover:underline hover:text-secondary"
               >
                 See how it works
               </Link>

@@ -120,7 +120,7 @@ const Features = () => {
             </span>
 
             <h2 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
-              Apply job or hire
+              Apply or post jobs
             </h2>
 
             <p className="text-gray-500 dark:text-gray-300">
