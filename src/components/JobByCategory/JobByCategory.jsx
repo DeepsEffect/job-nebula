@@ -37,7 +37,7 @@ const JobByCategory = () => {
             <Tab>
               <Button
                 variant="text"
-                size="lg"
+                size="md"
                 ripple={false}
                 className="hover:bg-transparent active:bg-transparent border-none"
               >
@@ -47,7 +47,7 @@ const JobByCategory = () => {
             <Tab>
               <Button
                 variant="text"
-                size="lg"
+                size="md"
                 ripple={false}
                 className="hover:bg-transparent active:bg-transparent border-none"
               >
@@ -57,7 +57,7 @@ const JobByCategory = () => {
             <Tab>
               <Button
                 variant="text"
-                size="lg"
+                size="md"
                 ripple={false}
                 className="hover:bg-transparent active:bg-transparent border-none"
               >
@@ -67,7 +67,7 @@ const JobByCategory = () => {
             <Tab>
               <Button
                 variant="text"
-                size="lg"
+                size="md"
                 ripple={false}
                 className="hover:bg-transparent active:bg-transparent border-none"
               >
@@ -77,7 +77,7 @@ const JobByCategory = () => {
             <Tab>
               <Button
                 variant="text"
-                size="lg"
+                size="md"
                 ripple={false}
                 className="hover:bg-transparent active:bg-transparent border-none"
               >

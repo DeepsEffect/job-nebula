@@ -1,11 +1,11 @@
 /* swiper navigation color */
 .swiper-button-prev,
 .swiper-button-next {
-  color: #6A1B9A 
+  color: #9B27B0 
 }
 
 /* on hover */
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
-  color: #9B27B0; 
+  color: #bc19d9; 
 }

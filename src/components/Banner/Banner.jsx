@@ -40,19 +40,20 @@ export default function Banner() {
   return (
     <>
       <Swiper
-        spaceBetween={30}
+        spaceBetween={0}
         centeredSlides={true}
         loop={true}
         autoplay={{
           delay: 4000,
-          disableOnInteraction: false,
+          disableOnInteraction: true,
+          pauseOnMouseEnter: true,
         }}
         pagination={{
           clickable: true,
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper lg:mt-10 min-h-[700px]"
+        className="mySwiper lg:min-h-[700px]"
       >
         {slidesData.map((slide, idx) => (
           <SwiperSlide key={idx}>

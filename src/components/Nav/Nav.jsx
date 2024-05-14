@@ -182,16 +182,14 @@ function Nav() {
             </>
           ) : (
             <>
-              {" "}
               <section className="space-x-2">
                 <Link to={"/login"}>
-                  {" "}
-                  <Button variant="text" color="white" size="sm">
+                  <Button className="border-secondary" variant="outlined" color="white" size="sm">
                     Log In
                   </Button>
                 </Link>
                 <Link to={"/signIn"}>
-                  <Button variant="gradient" size="sm">
+                  <Button className="bg-accent"  size="sm">
                     Sign In
                   </Button>
                 </Link>
@@ -215,10 +213,10 @@ function Nav() {
       <Collapse open={openNav}>
         <NavList />
         <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
-          <Button variant="outlined" size="sm" fullWidth>
+          <Button className="text-white border-secondary" variant="outlined" size="sm" fullWidth>
             Log In
           </Button>
-          <Button variant="gradient" size="sm" fullWidth>
+          <Button className="bg-accent" size="sm" fullWidth>
             Sign In
           </Button>
         </div>
