@@ -5,11 +5,13 @@ module.exports = withMT({
   theme: {
     extend: {
       colors: {
-        text: "#040316",
-        background: "#fbfbfe",
-        primary: "#6A1B9A",
-        secondary: "#9b27b0",
-        accent: "#0d48a0",
+        text: "var(--text)",
+        background: "var(--background)",
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
+        accent: "var(--accent)",
+        popper: "var(--popper)",
+        card: "var(--card)"
       },
       fontSize: {
         sm: "0.750rem",

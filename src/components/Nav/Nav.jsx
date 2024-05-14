@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   // Navbar,
   Collapse,
@@ -13,6 +13,7 @@ import {
   MenuList,
   MenuItem,
   Tooltip,
+  Switch,
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
@@ -20,6 +21,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./Nav.css";
 import { AuthContext } from "../../providers/AuthProver";
 import toast from "react-hot-toast";
+
 function NavList() {
   return (
     <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1 text-white font-heading">
@@ -79,8 +81,46 @@ function Nav() {
     );
   }, []);
 
+  //theming
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || null);
+
+  // update the theme preference in local storage
+  const updateThemePreference = (newTheme) => {
+    localStorage.setItem("theme", newTheme);
+  };
+
+  //checking the user theme preference
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      setTheme(storedTheme);
+    } else {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        setTheme("dark");
+      } else {
+        setTheme("light");
+      }
+    }
+  }, []);
+
+  //theme setup
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
+
+  //theme switch handler
+  const handleThemeSwitch = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    updateThemePreference(newTheme);
+  };
+
   return (
-    <section className="z-10 max-w-full py-2 bg-primary rounded-none border-none sticky top-0">
+    <section className="z-10 max-w-full py-2 bg-primary backdrop-blur-xl rounded-none border-none sticky top-0">
       <div className="flex px-8 lg:px-24 mx-auto items-center justify-between text-text">
         <Link
           to={"/"}
@@ -100,6 +140,18 @@ function Nav() {
               <>
                 {/* avatar */}
                 <Menu>
+                  <div className="mr-2">
+                    <Switch
+                      checked={theme === "dark"}
+                      onChange={handleThemeSwitch}
+                      label={
+                        <Typography className="font-medium text-white dark:text-text">
+                        Dark Mode
+                      </Typography>
+                      }
+                      color="indigo"
+                    />
+                  </div>
                   <Tooltip content={user.displayName}>
                     <MenuHandler>
                       <Avatar
@@ -186,7 +238,19 @@ function Nav() {
               </>
             ) : (
               <>
-                <section className="space-x-2">
+                <section className="space-x-2 flex">
+                  <div className="text-white">
+                    <Switch
+                      checked={theme === "dark"}
+                      onChange={handleThemeSwitch}
+                      label={
+                        <Typography className="font-medium text-white dark:text-text">
+                        Dark Mode
+                      </Typography>
+                      }
+                      color="indigo"
+                    />
+                  </div>
                   <Link to={"/login"}>
                     <Button
                       className="border-secondary"

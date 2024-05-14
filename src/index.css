@@ -1,4 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --text: #040316;
+    --background: #fbfbfe;
+    --primary: #681b98;
+    --secondary: #bc2bd5;
+    --accent: #0d48a0;
+    
+  }
+  .dark {
+    --text: #eae9fc;
+    --background: #010104;
+    --primary: #26033b70;
+    --secondary: #ae1ec7e0;
+    --accent: #5f9af211;
+    --popper: #0e3ca7;
+    --card: #40178733;
+  }
+}

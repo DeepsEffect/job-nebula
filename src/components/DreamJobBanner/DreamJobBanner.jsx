@@ -5,18 +5,18 @@ import { Link as ScrollLink } from "react-scroll";
 const DreamJobBanner = () => {
   return (
     <div className="lg:mt-24">
-      <div className="mx-auto h-full px-4 py-10 sm:max-w-xl md:max-w-full md:px-24  lg:px-24">
+      <div className="mx-auto h-full px-4 py-10 sm:max-w-xl md:max-w-full md:px-24 lg:px-24 ">
         <div className="flex flex-col items-center justify-between lg:flex-row">
           <div className="">
             <div className="lg:max-w-xl lg:pr-5 ">
-              <h2 className="mb-6 max-w-lg text-5xl font-heading font-light leading-snug tracking-tight text-primary sm:text-8xl">
+              <h2 className="mb-6 max-w-lg text-5xl font-heading font-light leading-snug tracking-tight text-primary dark:text-text sm:text-8xl">
                 Find Your <br />
                 <span className="my-1 inline-block border-b-8 border-secondary font-bold text-secondary">
                   Dream Job
                 </span>
                 Now
               </h2>
-              <p className="text-base text-gray-700 ">
+              <p className="text-base text-gray-700 dark:text-text">
                 Discover the path to your ideal career with our comprehensive
                 job search platform. Find your dream job today and step into a
                 brighter future.
@@ -26,7 +26,7 @@ const DreamJobBanner = () => {
               <Link to={"/allJobs"}>
                 <Button
                   variant="outlined"
-                  className="border-primary text-primary hover:border-secondary hover:text-secondary mr-4"
+                  className="border-primary text-primary dark:text-text dark:border-secondary hover:border-secondary hover:text-secondary mr-4"
                 >
                   Apply Now
                 </Button>
@@ -37,7 +37,7 @@ const DreamJobBanner = () => {
                 smooth={true}
                 offset={-200}
                 duration={500}
-                className="underline-offset-2 inline-flex items-center font-semibold text-primary underline transition-colors duration-200 hover:underline hover:text-secondary cursor-pointer"
+                className="underline-offset-2 inline-flex items-center font-semibold text-primary dark:text-text underline transition-colors duration-200 hover:underline hover:text-secondary cursor-pointer"
               >
                 See how it works
               </ScrollLink>
@@ -61,7 +61,7 @@ const DreamJobBanner = () => {
             <div className="w-fit rounded-[6rem] mx-auto overflow-hidden rounded-tl-none rounded-br-none bg-orange-400">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="absolute -left-10 -top-20 h-28 w-28 rounded-xl bg-white text-primary"
+                className="absolute -left-10 -top-20 h-28 w-28 rounded-xl bg-white dark:bg-background text-primary dark:text-secondary"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -73,7 +73,7 @@ const DreamJobBanner = () => {
               </svg>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="absolute right-0 -bottom-20 h-28 w-28 rounded-xl bg-white text-primary"
+                className="absolute right-0 -bottom-20 h-28 w-28 rounded-xl bg-white dark:bg-background text-primary dark:text-secondary"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >

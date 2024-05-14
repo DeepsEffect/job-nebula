@@ -4,15 +4,15 @@ import { Element } from "react-scroll";
 const Features = () => {
   return (
     <Element name="scrollToHowItWorks">
-      <section className="bg-white lg:mt-20 dark:bg-gray-900">
+      <section className="bg-white lg:mt-24 dark:bg-primary lg:py-24">
         <div className="lg:px-24 px-6 py-10 mx-auto">
           <h1 className="text-2xl font-semibold font-heading text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
             How it works?
           </h1>
 
           <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-16 md:grid-cols-2 xl:grid-cols-3">
-            <div className="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl dark:bg-gray-800">
-              <span className="inline-block p-3 text-white bg-primary rounded-full dark:text-white dark:bg-primary">
+            <div className="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl dark:bg-card">
+              <span className="inline-block p-3 dark:bg-popper text-white bg-primary rounded-full dark:text-white">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -29,16 +29,16 @@ const Features = () => {
                 </svg>
               </span>
 
-              <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
+              <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-text">
                 Create an account
               </h1>
 
-              <p className="text-gray-500 dark:text-gray-300">
+              <p className="text-gray-500 dark:text-gray-text">
                 It’s very easy to open an account and start your journey.
               </p>
               <Link
                 to={"/signIn"}
-                className="flex items-center -mx-1 text-sm text-primary capitalize transition-colors duration-300 transform dark:text-primary hover:underline hover:text-secondary dark:hover:text-secondary"
+                className="flex items-center -mx-1 text-sm text-primary capitalize transition-colors duration-300 transform dark:text-text hover:underline hover:text-secondary "
               >
                 <span className="mx-1">Create Now</span>
                 <svg
@@ -56,8 +56,8 @@ const Features = () => {
               </Link>
             </div>
 
-            <div className="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl dark:bg-gray-800">
-              <span className="inline-block p-3 text-white bg-primary rounded-full dark:text-white dark:bg-primary">
+            <div className="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl dark:bg-card">
+              <span className="inline-block p-3 text-white bg-primary rounded-full dark:text-white dark:bg-popper">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -85,7 +85,7 @@ const Features = () => {
 
               <Link
                 to={"/login"}
-                className="flex items-center -mx-1 text-sm text-primary capitalize transition-colors duration-300 transform dark:text-blue-400 hover:underline hover:text-secondary dark:hover:text-blue-500"
+                className="flex items-center -mx-1 text-sm text-primary capitalize transition-colors duration-300 transform hover:underline hover:text-secondary dark:text-text"
               >
                 <span className="mx-1">Login</span>
                 <svg
@@ -103,8 +103,8 @@ const Features = () => {
               </Link>
             </div>
 
-            <div className="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl dark:bg-gray-800">
-              <span className="inline-block p-3 text-white bg-primary rounded-full dark:text-white dark:bg-primary">
+            <div className="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl dark:bg-card">
+              <span className="inline-block p-3 text-white bg-primary rounded-full dark:text-white dark:bg-popper">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

@@ -17,7 +17,7 @@ const Hero = ({ title, description, imageUrl }) => {
               </p>
 
               <Link to={"/allJobs"}>
-                <button className="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-secondary lg:rounded-lg lg:w-auto hover:bg-[#b935a5] focus:outline-none focus:bg-primary">
+                <button className="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-secondary lg:rounded-lg lg:w-auto hover:-translate-y-1 hover:transition hover:ease-in-out focus:outline-none">
                   Find Now
                 </button>
               </Link>

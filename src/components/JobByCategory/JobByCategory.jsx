@@ -5,6 +5,7 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import JobCard from "../JobCard/JobCard";
 import { Link } from "react-router-dom";
+import './styles.css'
 
 const JobByCategory = () => {
   const [jobs, setJobs] = useState([]);
@@ -20,9 +21,9 @@ const JobByCategory = () => {
   }, []);
 
   return (
-    <section className="lg:mt-10">
-      <div className="text-center ">
-        <h2 className="text-xl lg:text-3xl font-bold font-heading">
+    <section className="lg:mt-10 ">
+      <div className="text-center text-text dark:text-text">
+        <h2 className="text-xl lg:text-3xl font-bold font-heading ">
           Search your desired job by these categories
         </h2>
         <p className="text-base">
@@ -31,7 +32,7 @@ const JobByCategory = () => {
         </p>
       </div>
       {/* tabs*/}
-      <div className="mx-auto lg:px-24 mt-6 lg:mt-14 font-medium ">
+      <div className="mx-auto lg:px-24 mt-6 lg:mt-14 font-medium">
         <Tabs>
           <TabList>
             <Tab>
@@ -39,7 +40,7 @@ const JobByCategory = () => {
                 variant="text"
                 size="md"
                 ripple={false}
-                className="hover:bg-transparent active:bg-transparent border-none font-heading"
+                className="hover:bg-transparent active:bg-transparent border-none font-heading text-text dark:text-text"
               >
                 All Jobs
               </Button>
@@ -49,7 +50,7 @@ const JobByCategory = () => {
                 variant="text"
                 size="md"
                 ripple={false}
-                className="hover:bg-transparent active:bg-transparent border-none font-heading"
+                className="hover:bg-transparent active:bg-transparent border-none font-heading text-text dark:text-text"
               >
                 On-Site Job
               </Button>
@@ -59,7 +60,7 @@ const JobByCategory = () => {
                 variant="text"
                 size="md"
                 ripple={false}
-                className="hover:bg-transparent active:bg-transparent border-none font-heading"
+                className="hover:bg-transparent active:bg-transparent border-none font-heading text-text dark:text-text"
               >
                 Remote Job
               </Button>
@@ -69,7 +70,7 @@ const JobByCategory = () => {
                 variant="text"
                 size="md"
                 ripple={false}
-                className="hover:bg-transparent active:bg-transparent border-none font-heading"
+                className="hover:bg-transparent active:bg-transparent border-none font-heading text-text dark:text-text"
               >
                 Part-time
               </Button>
@@ -79,7 +80,7 @@ const JobByCategory = () => {
                 variant="text"
                 size="md"
                 ripple={false}
-                className="hover:bg-transparent active:bg-transparent border-none font-heading"
+                className="hover:bg-transparent active:bg-transparent border-none font-heading text-text dark:text-text"
               >
                 Hybrid
               </Button>
