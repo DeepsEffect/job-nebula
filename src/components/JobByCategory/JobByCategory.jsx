@@ -138,7 +138,7 @@ const JobByCategory = () => {
             <Button
               size="sm"
               variant="outlined"
-              className=" mx-auto flex items-center justify-center lg:mt-6 border-secondary text-secondary"
+              className="mx-auto flex items-center justify-center lg:mt-6 border-secondary text-text"
             >
               view all jobs
             </Button>

@@ -1,3 +1,4 @@
+import { Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -14,13 +15,13 @@ const Footer = () => {
               <input
                 id="email"
                 type="text"
-                className="px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-primary dark:text-text dark:border-primary focus:border-primary dark:focus:border-primary focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-primary"
+                className="px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-primary dark:text-text dark:border-primary focus:border-primary dark:focus:border-secondary focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-primary"
                 placeholder="Email Address"
               />
 
-              <button className="w-full px-6 py-2.5 text-sm font-medium tracking-wider text-white transition-colors duration-300 transform md:w-auto md:mx-4 focus:outline-none bg-primary rounded-lg hover:bg-primary focus:ring focus:ring-primary focus:ring-opacity-80">
+              <Button className="text-sm tracking-wider text-white uppercase duration-300 transform bg-secondary lg:rounded-lg lg:w-auto hover:-translate-y-1 transition ease-in-out focus:outline-none hover:shadow-secondary hover:shadow-2xl ml-4">
                 Subscribe
-              </button>
+              </Button>
             </div>
           </div>
 

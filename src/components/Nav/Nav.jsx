@@ -238,7 +238,7 @@ function Nav() {
               </>
             ) : (
               <>
-                <section className="space-x-2 flex">
+                <section className="space-x-2 flex items-center">
                   <div className="text-white">
                     <Switch
                       checked={theme === "dark"}

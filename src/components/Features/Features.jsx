@@ -131,7 +131,7 @@ const Features = () => {
 
               <Link
                 to={"/allJobs"}
-                className="flex items-center -mx-1 text-sm text-primary capitalize transition-colors duration-300 transform dark:text-primary hover:underline hover:text-secondary dark:hover:text-secondary"
+                className="flex items-center -mx-1 text-sm text-primary hover:text-secondary dark:text-text capitalize transition-colors duration-300 transform dark:text-primary hover:underline  "
               >
                 <span className="mx-1">Start Applying</span>
                 <svg

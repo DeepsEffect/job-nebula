@@ -25,8 +25,8 @@ const DreamJobBanner = () => {
             <div className="mt-10 flex flex-col items-center md:flex-row">
               <Link to={"/allJobs"}>
                 <Button
-                  variant="outlined"
-                  className="border-primary text-primary dark:text-text dark:border-secondary hover:border-secondary hover:text-secondary mr-4"
+                  size="lg"
+                  className="text-sm tracking-wider text-white uppercase duration-300 transform bg-secondary lg:rounded-lg lg:w-auto hover:-translate-y-1 transition ease-in-out focus:outline-none hover:shadow-secondary hover:shadow-2xl mr-4"
                 >
                   Apply Now
                 </Button>
