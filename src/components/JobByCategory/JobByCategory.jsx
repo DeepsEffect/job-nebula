@@ -122,7 +122,7 @@ const JobByCategory = () => {
           <TabPanel>
             <div className="grid grid-cols-1 lg:grid-cols-2">
               {jobs
-                .filter((job) => job.jobCategory === "hybrid")
+                .filter((job) => job.jobCategory === "Hybrid")
                 .map((job) => (
                   <JobCard key={job._id} job={job}></JobCard>
                 ))}

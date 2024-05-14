@@ -6,7 +6,7 @@ import { updateProfile } from "firebase/auth";
 import { auth } from "../../firebase/firebase.config";
 
 const SignIn = () => {
-  const { registerUser, signInWithGoogle, setUser, user } =
+  const { registerUser, signInWithGoogle, setUser, user, loading } =
     useContext(AuthContext);
   const navigate = useNavigate();
   //handle register
@@ -58,6 +58,7 @@ const SignIn = () => {
       .catch((error) => {
         console.error(error);
         toast.error(error.code.slice(5));
+        loading(false)
       });
   };
 
@@ -72,6 +73,7 @@ const SignIn = () => {
       .catch((error) => {
         console.error(error);
         toast.error(error.code);
+        loading(false)
       });
   };
 

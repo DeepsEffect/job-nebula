@@ -6,12 +6,14 @@ import { AuthContext } from "../../providers/AuthProver";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Spinner } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
 
 const AddJob = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   // handler
   const handlePostJob = (e) => {
@@ -49,6 +51,8 @@ const AddJob = () => {
         console.log(res.data);
         if (res.data.insertedId) {
           setLoading(false);
+          form.reset();
+          navigate("/myJobs");
           toast.success("Job posted successfully");
         }
       })

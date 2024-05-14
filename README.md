@@ -14,6 +14,7 @@ Packages used for this project:
 - react-hot-toast
 - react-tabs
 - sweetalert2
+- react-scroll
 - react-modal and more...
 
 Backend made with expressJS & MongoDB

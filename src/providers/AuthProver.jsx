@@ -9,7 +9,6 @@ import {
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config";
 import { GoogleAuthProvider } from "firebase/auth";
-import { GithubAuthProvider } from "firebase/auth";
 
 //create context
 export const AuthContext = createContext(null);
@@ -19,29 +18,33 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   //create user with email and password
-  const registerUser = (email, password) => {
+  const registerUser = async (email, password) => {
     setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
+    return createUserWithEmailAndPassword(auth, email, password).catch(
+      (error) => {
+        setLoading(false);
+        throw error;
+      }
+    );
   };
 
   //log in user
-  const loginUser = (email, password) => {
+  const loginUser = async (email, password) => {
     setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
+    return signInWithEmailAndPassword(auth, email, password).catch((error) => {
+      setLoading(false);
+      throw error;
+    });
   };
 
   //sign in with google
   const googleProvider = new GoogleAuthProvider();
-  const signInWithGoogle = () => {
+  const signInWithGoogle = async () => {
     setLoading(true);
-    return signInWithPopup(auth, googleProvider);
-  };
-
-  //sign in with github
-  const githubProvider = new GithubAuthProvider();
-  const signInWithGithub = () => {
-    setLoading(true);
-    return signInWithPopup(auth, githubProvider);
+    return signInWithPopup(auth, googleProvider).catch((error) => {
+      setLoading(false);
+      throw error;
+    });
   };
 
   //observing user
@@ -70,7 +73,6 @@ const AuthProvider = ({ children }) => {
     loading,
     registerUser,
     signInWithGoogle,
-    signInWithGithub,
     loginUser,
     LogOut,
     setUser,

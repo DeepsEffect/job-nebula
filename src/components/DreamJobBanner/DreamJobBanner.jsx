@@ -1,5 +1,6 @@
 import { Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 
 const DreamJobBanner = () => {
   return (
@@ -23,17 +24,23 @@ const DreamJobBanner = () => {
             </div>
             <div className="mt-10 flex flex-col items-center md:flex-row">
               <Link to={"/allJobs"}>
-                <Button variant="outlined" className="border-primary text-primary hover:border-secondary hover:text-secondary mr-4">
+                <Button
+                  variant="outlined"
+                  className="border-primary text-primary hover:border-secondary hover:text-secondary mr-4"
+                >
                   Apply Now
                 </Button>
               </Link>
-              <Link
-                to={"/blogs"}
-                aria-label=""
-                className="underline-offset-2 inline-flex items-center font-semibold text-primary underline transition-colors duration-200 hover:underline hover:text-secondary"
+              <ScrollLink
+                to="scrollToHowItWorks"
+                spy={true}
+                smooth={true}
+                offset={-200}
+                duration={500}
+                className="underline-offset-2 inline-flex items-center font-semibold text-primary underline transition-colors duration-200 hover:underline hover:text-secondary cursor-pointer"
               >
                 See how it works
-              </Link>
+              </ScrollLink>
             </div>
           </div>
           <div className="relative hidden lg:ml-32 lg:block lg:w-1/2">

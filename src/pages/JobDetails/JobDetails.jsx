@@ -82,6 +82,7 @@ const JobDetails = () => {
         }
       })
       .catch((err) => {
+        closeModal();
         console.error(err);
         toast.error(err.response.data);
       });
