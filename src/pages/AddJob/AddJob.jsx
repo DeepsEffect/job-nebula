@@ -223,7 +223,7 @@ const AddJob = () => {
               </div>
               {/* post job */}
               {loading && (
-                <p className="flex justify-center items-center gap-2 border col-span-2">
+                <p className="flex justify-center items-center gap-2 col-span-2">
                   <Spinner /> posting job...
                 </p>
               )}
