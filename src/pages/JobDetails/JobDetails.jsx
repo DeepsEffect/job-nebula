@@ -153,7 +153,7 @@ const JobDetails = () => {
 
       <ScrollRestoration></ScrollRestoration>
       <div className="bg-primary min-h-[400px] text-center text-white flex flex-col justify-center items-center">
-        <h2 className="text-4xl font-bold">Job Details for: {jobs.jobTitle}</h2>
+        <h2 className=" text-2xl lg:text-4xl font-bold font-heading">Job Details for: {jobs.jobTitle}</h2>
         <p>
           See the details view of this job, hit Apply button if it suits your
           style.
@@ -178,7 +178,7 @@ const JobDetails = () => {
               </Button>
             </p>
 
-            <h2 className="block mt-4 text-2xl font-semibold text-gray-800 hover:underline dark:text-white md:text-3xl">
+            <h2 className="block mt-4 text-2xl font-semibold text-gray-800 hover:underline dark:text-white md:text-3xl font-heading">
               {jobs.jobTitle}
             </h2>
 

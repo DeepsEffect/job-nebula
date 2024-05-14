@@ -20,7 +20,6 @@ import { Link, NavLink } from "react-router-dom";
 import "./Nav.css";
 import { AuthContext } from "../../providers/AuthProver";
 import toast from "react-hot-toast";
-
 function NavList() {
   return (
     <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1 text-white font-heading">
@@ -85,8 +84,9 @@ function Nav() {
       <div className="flex px-8 lg:px-24 mx-auto items-center justify-between text-text">
         <Link
           to={"/"}
-          className="mr-4 cursor-pointer py-1.5 lg:ml-2 font-bold text-xl lg:text-2xl text-white font-heading drop-shadow-lg"
+          className="mr-4 cursor-pointer py-1.5 lg:ml-2 font-bold text-xl lg:text-2xl text-white font-heading drop-shadow-lg flex items-center justify-center gap-2"
         >
+          <img className="w-[40px] rounded-lg" src="logo.png" alt="logo" />
           Job <span className="">Nebula</span>
         </Link>
         <div className="hidden lg:block">
