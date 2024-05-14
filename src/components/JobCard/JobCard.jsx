@@ -27,8 +27,8 @@ const JobCard = ({ job }) => {
               title={job.jobDescription}
               className="overflow-hidden pr-7 text-sm text-gray-500"
             >
-              {job.jobDescription.length > 200 ? (
-                <>{job.jobDescription.substring(0, 200)}...</>
+              {job.jobDescription.length > 150 ? (
+                <>{job.jobDescription.substring(0, 150)}...</>
               ) : (
                 <>{job.jobDescription}</>
               )}

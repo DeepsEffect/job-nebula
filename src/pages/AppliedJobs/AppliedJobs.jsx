@@ -4,6 +4,7 @@ import {
   Card,
   Option,
   Select,
+  Spinner,
   Typography,
 } from "@material-tailwind/react";
 import axios from "axios";
@@ -14,14 +15,19 @@ const AppliedJobs = () => {
   const [jobs, setJobs] = useState([]);
   const { user } = useContext(AuthContext);
   const [jobCategory, setJobCategory] = useState("");
-
+  const [loading, setLoading] = useState(false);
   //getting the data from DB
   useEffect(() => {
-    axios(
-      `${import.meta.env.VITE_SERVER_API_URL}/applicants/${user.email}`
-    ).then((res) => {
-      setJobs(res.data);
-    });
+    setLoading(true);
+    axios(`${import.meta.env.VITE_SERVER_API_URL}/applicants/${user.email}`)
+      .then((res) => {
+        setJobs(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
   }, [user.email]);
 
   const TABLE_HEAD = [
@@ -78,68 +84,72 @@ const AppliedJobs = () => {
               ))}
             </tr>
           </thead>
-          <tbody>
-            {filteredJobs?.map((job) => (
-              <tr key={job._id} className="even:bg-blue-gray-50/50">
-                <td className="p-4">
-                  <Avatar
-                    src={job.bannerImg}
-                    alt={job.jobTitle}
-                    variant="rounded"
-                  />
-                </td>
-                <td className="p-4">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-normal"
-                  >
-                    {job.jobTitle}
-                  </Typography>
-                </td>
-                <td className="p-4">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-normal"
-                  >
-                    {new Date(job.postingDate).toLocaleDateString()}
-                  </Typography>
-                </td>
-                <td className="p-4">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-normal"
-                  >
-                    {new Date(
-                      job.applicantsInfo.appliedDate
-                    ).toLocaleDateString()}
-                  </Typography>
-                </td>
-                <td className="p-4">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-medium"
-                  >
-                    {`$${job.salaryRange.minSalary}-$${job.salaryRange.maxSalary}`}
-                  </Typography>
-                </td>
-                <td className="p-4">
-                  <Button
-                    variant="outlined"
-                    size="sm"
-                    color="amber"
-                    ripple={false}
-                    className="font-medium rounded-full"
-                  >
-                    Pending...
-                  </Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+          {loading ? (
+            <Spinner />
+          ) : (
+            <tbody>
+              {filteredJobs?.map((job) => (
+                <tr key={job._id} className="even:bg-blue-gray-50/50">
+                  <td className="p-4">
+                    <Avatar
+                      src={job.bannerImg}
+                      alt={job.jobTitle}
+                      variant="rounded"
+                    />
+                  </td>
+                  <td className="p-4">
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-normal"
+                    >
+                      {job.jobTitle}
+                    </Typography>
+                  </td>
+                  <td className="p-4">
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-normal"
+                    >
+                      {new Date(job.postingDate).toLocaleDateString()}
+                    </Typography>
+                  </td>
+                  <td className="p-4">
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-normal"
+                    >
+                      {new Date(
+                        job.applicantsInfo.appliedDate
+                      ).toLocaleDateString()}
+                    </Typography>
+                  </td>
+                  <td className="p-4">
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-medium"
+                    >
+                      {`$${job.salaryRange.minSalary}-$${job.salaryRange.maxSalary}`}
+                    </Typography>
+                  </td>
+                  <td className="p-4">
+                    <Button
+                      variant="outlined"
+                      size="sm"
+                      color="amber"
+                      ripple={false}
+                      className="font-medium rounded-full"
+                    >
+                      Pending...
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          )}
         </table>
       </Card>
     </div>

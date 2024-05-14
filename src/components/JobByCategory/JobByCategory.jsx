@@ -87,7 +87,7 @@ const JobByCategory = () => {
           </TabList>
           <TabPanel>
             <div className="grid grid-cols-1 lg:grid-cols-2">
-              {jobs.slice(0, 6).map((job) => (
+              {jobs?.slice(0, 6).map((job) => (
                 <JobCard job={job} key={job._id}></JobCard>
               ))}
             </div>

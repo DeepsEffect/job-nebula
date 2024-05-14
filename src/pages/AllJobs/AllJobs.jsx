@@ -1,4 +1,10 @@
-import { Avatar, Button, Card, Typography } from "@material-tailwind/react";
+import {
+  Avatar,
+  Button,
+  Card,
+  Spinner,
+  Typography,
+} from "@material-tailwind/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -6,12 +12,20 @@ import { Link } from "react-router-dom";
 const AllJobs = () => {
   const [jobs, setJobs] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [loading, setLoading] = useState(false);
 
   //getting the data from DB
   useEffect(() => {
-    axios(`${import.meta.env.VITE_SERVER_API_URL}/jobs`).then((res) => {
-      setJobs(res.data);
-    });
+    setLoading(true);
+    axios(`${import.meta.env.VITE_SERVER_API_URL}/jobs`)
+      .then((res) => {
+        setJobs(res.data);
+        loading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
   }, []);
 
   //search functionality
@@ -103,65 +117,69 @@ const AllJobs = () => {
               ))}
             </tr>
           </thead>
-          <tbody>
-            {filteredJobs.map((job) => (
-              <tr key={job._id} className="even:bg-blue-gray-50/50">
-                <td className="p-4">
-                  <Avatar
-                    src={job.bannerImg}
-                    alt={job.jobTitle}
-                    variant="rounded"
-                  />
-                </td>
-                <td className="p-4">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-normal"
-                  >
-                    {highlightKeywords(job.jobTitle)}
-                  </Typography>
-                </td>
-                <td className="p-4">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-normal"
-                  >
-                    {new Date(job.postingDate).toLocaleDateString()}
-                  </Typography>
-                </td>
-                <td className="p-4">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-normal"
-                  >
-                    {new Date(job.applicationDeadline).toLocaleDateString()}
-                  </Typography>
-                </td>
-                <td className="p-4">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-medium"
-                  >
-                    {`$${job.salaryRange.minSalary}-$${job.salaryRange.maxSalary}`}
-                  </Typography>
-                </td>
-                <td className="p-4">
-                  <Link to={`/jobDetails/${job._id}`}>
-                    <Button
-                      size="sm"
-                      className="font-medium bg-primary hover:bg-secondary"
+          {loading ? (
+            <Spinner />
+          ) : (
+            <tbody>
+              {filteredJobs.map((job) => (
+                <tr key={job._id} className="even:bg-blue-gray-50/50">
+                  <td className="p-4">
+                    <Avatar
+                      src={job.bannerImg}
+                      alt={job.jobTitle}
+                      variant="rounded"
+                    />
+                  </td>
+                  <td className="p-4">
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-normal"
                     >
-                      View Details
-                    </Button>
-                  </Link>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+                      {highlightKeywords(job.jobTitle)}
+                    </Typography>
+                  </td>
+                  <td className="p-4">
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-normal"
+                    >
+                      {new Date(job.postingDate).toLocaleDateString()}
+                    </Typography>
+                  </td>
+                  <td className="p-4">
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-normal"
+                    >
+                      {new Date(job.applicationDeadline).toLocaleDateString()}
+                    </Typography>
+                  </td>
+                  <td className="p-4">
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-medium"
+                    >
+                      {`$${job.salaryRange.minSalary}-$${job.salaryRange.maxSalary}`}
+                    </Typography>
+                  </td>
+                  <td className="p-4">
+                    <Link to={`/jobDetails/${job._id}`}>
+                      <Button
+                        size="sm"
+                        className="font-medium bg-primary hover:bg-secondary"
+                      >
+                        View Details
+                      </Button>
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          )}
         </table>
       </Card>
     </div>
