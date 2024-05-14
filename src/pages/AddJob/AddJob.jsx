@@ -5,11 +5,13 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProver";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Spinner } from "@material-tailwind/react";
 
 const AddJob = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const { user } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
 
   // handler
   const handlePostJob = (e) => {
@@ -39,18 +41,20 @@ const AddJob = () => {
       job_applicants: 0,
     };
     // console.table(job);
-
+    setLoading(true);
     //send job data to the backend
     axios
       .post(`${import.meta.env.VITE_SERVER_API_URL}/jobs`, job)
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
+          setLoading(false);
           toast.success("Job posted successfully");
         }
       })
       .catch((err) => {
         console.log(err);
+        loading(false);
         toast.error(err.code);
       });
   };
@@ -218,6 +222,11 @@ const AddJob = () => {
                 />
               </div>
               {/* post job */}
+              {loading && (
+                <p className="flex justify-center items-center gap-2 border col-span-2">
+                  <Spinner /> posting job...
+                </p>
+              )}
               <button
                 type="submit"
                 className="flex items-center font-bold lg:col-span-2 justify-between w-full px-6 py-3 text-sm tracking-wide text-white uppercase transition-colors duration-300 transform bg-primary rounded-lg hover:bg-secondary focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-50"
