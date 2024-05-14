@@ -42,7 +42,7 @@ const Login = () => {
   return (
     <section>
       <div className="bg-primary min-h-[400px] text-center text-white flex flex-col justify-center items-center">
-        <h2 className="text-4xl font-bold font-heading">Login</h2>
+        <h2 className="text-3xl lg:text-4xl font-bold font-heading">Login</h2>
         <p>Login to your account & Start posting or applying for jobs</p>
       </div>
 

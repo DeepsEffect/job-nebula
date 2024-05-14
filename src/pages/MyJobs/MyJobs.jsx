@@ -24,7 +24,7 @@ const MyJobs = () => {
   return (
     <div>
       <div className="bg-primary min-h-[400px] text-center text-white flex flex-col justify-center items-center">
-        <h2 className="text-4xl font-bold font-heading">My Added Jobs</h2>
+        <h2 className="text-3xl lg:text-4xl font-bold font-heading">My Added Jobs</h2>
         <p>
           Browse the job you have added. You can also edit and delete them from
           here.

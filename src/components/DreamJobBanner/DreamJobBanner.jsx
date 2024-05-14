@@ -9,11 +9,12 @@ const DreamJobBanner = () => {
         <div className="flex flex-col items-center justify-between lg:flex-row">
           <div className="">
             <div className="lg:max-w-xl lg:pr-5 ">
-              <h2 className="mb-6 max-w-lg text-5xl font-heading font-light leading-snug tracking-tight text-primary dark:text-text sm:text-8xl">
+              <h2 className="mb-6 max-w-lg text-4xl lg:text-5xl font-heading font-light leading-snug tracking-tight text-primary dark:text-text sm:text-8xl">
                 Find Your <br />
-                <span className="my-1 inline-block border-b-8 border-secondary font-bold text-secondary">
+                <span className="my-1 mr-2 inline-block border-b-8 border-secondary font-bold text-secondary">
                   Dream Job
                 </span>
+                <br />
                 Now
               </h2>
               <p className="text-base text-gray-700 dark:text-text">
@@ -22,7 +23,7 @@ const DreamJobBanner = () => {
                 brighter future.
               </p>
             </div>
-            <div className="mt-10 flex flex-col items-center md:flex-row">
+            <div className="mt-10 flex items-center md:flex-row">
               <Link to={"/allJobs"}>
                 <Button
                   size="lg"

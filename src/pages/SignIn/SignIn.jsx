@@ -58,7 +58,7 @@ const SignIn = () => {
       .catch((error) => {
         console.error(error);
         toast.error(error.code.slice(5));
-        loading(false)
+        loading(false);
       });
   };
 
@@ -73,14 +73,16 @@ const SignIn = () => {
       .catch((error) => {
         console.error(error);
         toast.error(error.code);
-        loading(false)
+        loading(false);
       });
   };
 
   return (
     <section className="lg:mb-20">
       <div className="bg-primary min-h-[400px] text-center text-white flex flex-col justify-center items-center">
-        <h2 className="text-4xl font-bold font-heading">Register</h2>
+        <h2 className=" text-3xl lg:text-4xl font-bold font-heading">
+          Register
+        </h2>
         <p>Create an account & Start posting or applying for jobs</p>
       </div>
       <div className="flex w-full lg:mt-20 max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">

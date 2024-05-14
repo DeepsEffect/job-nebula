@@ -2,7 +2,7 @@ const Blog = () => {
   return (
     <div className="container mx-auto py-8 text-text">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-4 font-heading">
+        <h1 className="text-2xl lg:text-3xl font-bold mb-4 font-heading">
           Exploring Web Development: Understanding Access Tokens, Refresh
           Tokens, Express.js, and Nest.js
         </h1>

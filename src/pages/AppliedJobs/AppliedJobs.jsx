@@ -41,7 +41,7 @@ const AppliedJobs = () => {
   return (
     <div>
       <div className="bg-primary min-h-[400px] text-center text-white flex flex-col justify-center items-center">
-        <h2 className="text-4xl font-bold font-heading">Applied Jobs</h2>
+        <h2 className=" text-3xl lg:text-4xl font-bold font-heading">Applied Jobs</h2>
         <p>Find all the jobs you applied for in one place</p>
         <div className="w-72 mt-4">
           <Select
