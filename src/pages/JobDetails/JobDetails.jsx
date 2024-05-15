@@ -89,7 +89,7 @@ const JobDetails = () => {
   };
 
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="text-text">
       {/* modal */}
       <Modal
         isOpen={modalIsOpen}
@@ -101,24 +101,20 @@ const JobDetails = () => {
           close
         </Button>
         <form onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2 ">
             <div>
-              <label className="text-gray-700 dark:text-gray-200">
-                Username
-              </label>
+              <label className="">Username</label>
               <input
                 defaultValue={user.displayName}
                 readOnly
                 name="name"
                 type="text"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-primary focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                className="block w-full px-4 py-2 mt-2 text-text bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-primary focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
 
             <div>
-              <label className="text-gray-700 dark:text-gray-200">
-                Email Address
-              </label>
+              <label className="text-gray-700 ">Email Address</label>
               <input
                 defaultValue={user.email}
                 readOnly
@@ -128,9 +124,7 @@ const JobDetails = () => {
               />
             </div>
             <div className="col-span-2">
-              <label className="text-gray-700 dark:text-gray-200">
-                Resume link
-              </label>
+              <label className="text-gray-700">Resume link</label>
               <input
                 required
                 type="url"
@@ -143,7 +137,8 @@ const JobDetails = () => {
           <div className="flex justify-end mt-6">
             <Button
               type="submit"
-              className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-primary rounded-md hover:bg-secondary focus:outline-none focus:bg-secondary"
+              size="lg"
+              className="w-full mt-6 text-sm tracking-wider text-white uppercase duration-300 transform bg-secondary lg:rounded-lg lg:w-auto hover:-translate-y-1 transition ease-in-out focus:outline-none hover:shadow-secondary hover:shadow-2xl"
             >
               Submit
             </Button>
@@ -154,7 +149,9 @@ const JobDetails = () => {
 
       <ScrollRestoration></ScrollRestoration>
       <div className="bg-primary min-h-[400px] text-center text-white flex flex-col justify-center items-center">
-        <h2 className=" text-2xl lg:text-4xl font-bold font-heading">Job Details for: {jobs.jobTitle}</h2>
+        <h2 className=" text-2xl lg:text-4xl font-bold font-heading">
+          Job Details for: {jobs.jobTitle}
+        </h2>
         <p>
           See the details view of this job, hit Apply button if it suits your
           style.
@@ -169,11 +166,11 @@ const JobDetails = () => {
           />
 
           <div className="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
-            <p className="text-lg font-bold text-accent uppercase">
+            <p className="text-lg font-bold uppercase">
               <Button
                 variant="outlined"
                 size="sm"
-                className="rounded-full border-secondary"
+                className="rounded-full border-secondary text-text"
               >
                 {jobs.jobCategory}
               </Button>
@@ -216,7 +213,7 @@ const JobDetails = () => {
             <Button
               onClick={openModal}
               type="button"
-              className="bg-primary hover:bg-secondary"
+              className="w-full mt-6 text-sm tracking-wider text-white uppercase duration-300 transform bg-secondary lg:rounded-lg lg:w-auto hover:-translate-y-1 transition ease-in-out focus:outline-none hover:shadow-secondary hover:shadow-2xl"
             >
               Apply Now
             </Button>

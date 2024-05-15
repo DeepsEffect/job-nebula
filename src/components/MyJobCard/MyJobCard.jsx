@@ -131,7 +131,7 @@ const MyJobCard = ({ job, setMyJobs, myJobs }) => {
           >
             {/* job title */}
             <div>
-              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+              <label className="block mb-2 text-sm text-gray-600">
                 Job Title
               </label>
               <input
@@ -144,7 +144,7 @@ const MyJobCard = ({ job, setMyJobs, myJobs }) => {
             </div>
             {/* job banner */}
             <div>
-              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+              <label className="block mb-2 text-sm text-gray-600">
                 Job Banner Image
               </label>
               <input
@@ -157,7 +157,7 @@ const MyJobCard = ({ job, setMyJobs, myJobs }) => {
             </div>
             {/* username */}
             <div>
-              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+              <label className="block mb-2 text-sm text-gray-600">
                 Username
               </label>
               <input
@@ -171,7 +171,7 @@ const MyJobCard = ({ job, setMyJobs, myJobs }) => {
             </div>
             {/* email */}
             <div>
-              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+              <label className="block mb-2 text-sm text-gray-600">
                 User Email
               </label>
               <input
@@ -185,7 +185,7 @@ const MyJobCard = ({ job, setMyJobs, myJobs }) => {
             </div>
             {/* Job category */}
             <div>
-              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+              <label className="block mb-2 text-sm text-gray-600">
                 Job Category
               </label>
               <select
@@ -203,7 +203,7 @@ const MyJobCard = ({ job, setMyJobs, myJobs }) => {
             <section className="flex gap-2">
               {/* min salary */}
               <div>
-                <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                <label className="block mb-2 text-sm text-gray-600">
                   Minimum Salary
                 </label>
                 <input
@@ -216,7 +216,7 @@ const MyJobCard = ({ job, setMyJobs, myJobs }) => {
               </div>
               {/* max salary */}
               <div>
-                <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                <label className="block mb-2 text-sm text-gray-600">
                   Maximum Salary
                 </label>
                 <input
@@ -231,7 +231,7 @@ const MyJobCard = ({ job, setMyJobs, myJobs }) => {
 
             {/* job description */}
             <div className="lg:col-span-2">
-              <label className="block text-sm text-gray-500 dark:text-gray-300">
+              <label className="block text-sm text-gray-500">
                 Job Description
               </label>
               <textarea
@@ -245,7 +245,7 @@ const MyJobCard = ({ job, setMyJobs, myJobs }) => {
 
             {/* posting date */}
             <div>
-              <label className="block text-sm text-gray-500 dark:text-gray-300">
+              <label className="block text-sm text-gray-500">
                 Posting Date
               </label>
               <DatePicker
@@ -257,7 +257,7 @@ const MyJobCard = ({ job, setMyJobs, myJobs }) => {
             </div>
             {/* deadline */}
             <div>
-              <label className="block text-sm text-gray-500 dark:text-gray-300">
+              <label className="block text-sm text-gray-500">
                 Application Deadline
               </label>
               <DatePicker
@@ -346,7 +346,7 @@ const MyJobCard = ({ job, setMyJobs, myJobs }) => {
             </section>
           </div>
           <section className="flex mt-4 gap-4">
-            <div className="lg:absolute lg:-top-5 lg:-right-3">
+            <div className="lg:absolute lg:-top-5 lg:-right-5">
               <IconButton
                 onClick={openModal}
                 className="rounded-full bg-blue-400"
@@ -367,7 +367,7 @@ const MyJobCard = ({ job, setMyJobs, myJobs }) => {
                 </svg>
               </IconButton>
             </div>
-            <div className="lg:absolute lg:top-10 lg:-right-3">
+            <div className="lg:absolute lg:top-10 lg:-right-5">
               <IconButton
                 onClick={() => handleDeleteJob(job._id)}
                 className="rounded-full bg-red-400"
