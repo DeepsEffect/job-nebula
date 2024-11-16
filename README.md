@@ -4,24 +4,18 @@ Job Nebula is a full-stack web application designed for posting and applying for
 
 ## ✨ Features
 
-- **🔐 Authentication**  
-  Secure login system using Firebase authentication.
+- **🔐 Authentication**: Secure login system using Firebase authentication.
 
-- **📝 Full Job Management**  
-   Users can create, read, update, and delete job posts (CRUD).
-
-- **🔖 Job Search and Filtering**  
-  Browse jobs by categories like on-site, remote, part-time, and hybrid.
-
-- **🔍 Search & Sort**  
-  Search and Sort options to find what you need quickly.
-
-- **👏 Apply for Jobs**  
-  Apply directly to job listings by uploading your resume.
-
-- **📱 Dark/Light Mode Toggle**  
-  Switch between dark and light mode for a better viewing experience
-
+- **📝 Full Job Management**:  Users can create, read, update, and delete job posts (CRUD).
+  
+- **🔖 Job Search and Filtering**: Browse jobs by categories like on-site, remote, part-time, and hybrid.
+ 
+- **🔍 Search & Sort**: Search and Sort options to find what you need quickly.
+  
+- **👏 Apply for Jobs**: Apply directly to job listings by uploading your resume.
+  
+- **📱 Dark/Light Mode Toggle**: Switch between dark and light mode for a better viewing experience
+  
 ## 🛠️ Tech Stack
 
 ### Frontend
@@ -67,14 +61,14 @@ Job Nebula is a full-stack web application designed for posting and applying for
 4. **Set up environment variables**
    Create a `.env.local` file in the root directory:
 
-   ```
-   VITE_APIKEY=<your-firebase-api-key>
-   VITE_AUTHDOMAIN=<your-firebase-auth-domain>
-   VITE_PROJECTID=<your-firebase-project-id>
-   VITE_STORAGEBUCKET=<your-firebase-storage-bucket>
-   VITE_MESSAGINGSENDERID=<your-firebase-sender-id>
-   VITE_APPID=<your-firebase-app-id>
-   VITE_SERVER_API_URL='https://job-nebula-server.vercel.app'
+   ```bash
+     VITE_APIKEY=<your-firebase-api-key>
+     VITE_AUTHDOMAIN=<your-firebase-auth-domain>
+     VITE_PROJECTID=<your-firebase-project-id>
+     VITE_STORAGEBUCKET=<your-firebase-storage-bucket>
+     VITE_MESSAGINGSENDERID=<your-firebase-sender-id>
+     VITE_APPID=<your-firebase-app-id>
+     VITE_SERVER_API_URL='https://job-nebula-server.vercel.app'
    ```
 
 5. **Start development server**
