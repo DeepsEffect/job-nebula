@@ -127,7 +127,7 @@ const JobDetails = () => {
               <label className="text-gray-700">Resume link</label>
               <input
                 required
-                type="url"
+                type="text"
                 name="resume"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-primary focus:ring-primary focus:ring-opacity-40 dark:focus:border-primary focus:outline-none focus:ring"
               />

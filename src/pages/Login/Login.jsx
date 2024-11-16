@@ -131,6 +131,7 @@ const Login = () => {
                     <input
                       type="email"
                       name="email"
+                      defaultValue={"violetnebula@gmail.com"}
                       placeholder="example@example.com"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-primary dark:focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40"
                     />
@@ -152,6 +153,7 @@ const Login = () => {
                     <input
                       type="password"
                       name="password"
+                      defaultValue={"violetNebula"}
                       placeholder="Your Password"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-primary dark:focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40"
                     />
@@ -168,7 +170,7 @@ const Login = () => {
                   Don&#x27;t have an account yet?{" "}
                   <Link
                     to={"/signIn"}
-                    className="text-primary focus:outline-none focus:underline hover:underline"
+                    className="text-primary dark:text-gray-500 focus:outline-none focus:underline hover:underline"
                   >
                     Register
                   </Link>

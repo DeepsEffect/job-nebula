@@ -5,7 +5,7 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import JobCard from "../JobCard/JobCard";
 import { Link } from "react-router-dom";
-import './styles.css'
+import "./styles.css";
 
 const JobByCategory = () => {
   const [jobs, setJobs] = useState([]);

@@ -43,7 +43,7 @@ const MyJobs = () => {
             />
           ))
         ) : (
-          <div className="flex flex-col justify-center items-center mt-4 lg:mt-10">
+          <div className="flex flex-col justify-center items-center text-text">
             <p>You haven&apos;t added any jobs yet.</p>
             <Link to={"/addAJob"}>
               <Button className="bg-primary hover:bg-secondary">Add Job</Button>

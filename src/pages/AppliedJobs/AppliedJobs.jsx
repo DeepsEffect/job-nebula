@@ -45,6 +45,7 @@ const AppliedJobs = () => {
         <p>Find all the jobs you applied for in one place</p>
         <div className="w-72 mt-4">
           <Select
+            variant="standard"
             label="Filter by job category"
             color="purple"
             className="text-white"
