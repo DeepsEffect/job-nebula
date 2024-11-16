@@ -12,9 +12,9 @@ Job Nebula is a full-stack web application designed for posting and applying for
  
 - **🔍 Search & Sort**: Search and Sort options to find what you need quickly.
   
-- **👏 Apply for Jobs**: Apply directly to job listings by uploading your resume.
+- **✅ Apply for Jobs**: Apply directly to job listings by uploading your resume.
   
-- **📱 Dark/Light Mode Toggle**: Switch between dark and light mode for a better viewing experience
+- **🌓 Dark/Light Mode Toggle**: Switch between dark and light mode for a better viewing experience
   
 ## 🛠️ Tech Stack
 
