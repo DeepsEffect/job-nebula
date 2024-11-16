@@ -126,7 +126,7 @@ function Nav() {
           to={"/"}
           className="mr-4 cursor-pointer py-1.5 lg:ml-2 font-bold text-xl lg:text-xl text-white font-heading drop-shadow-lg flex items-center justify-center gap-2"
         >
-          <img className="w-[30px] rounded-lg" src="logo.png" alt="logo" />
+          <img className="w-[30px] rounded-lg" src="/logo.png" alt="logo" />
           Job <span className="">Nebula</span>
         </Link>
         <div className="hidden lg:block">
